@@ -10,6 +10,11 @@
 #import "KIImagePager.h"
 
 @interface ViewController : UIViewController
-@property (strong, nonatomic) IBOutlet KIImagePager *imagePager;
+@property (strong, nonatomic) IBOutlet UIButton *searchByTagButton;
+
+@property (strong, nonatomic) IBOutlet UITextField *searchByTagTextField;
+
+@property (strong, nonatomic) IBOutlet UITextField *searchByLocTextField;
+@property (strong, nonatomic) IBOutlet UIButton *segueForLocViewButton;
 
 @end
