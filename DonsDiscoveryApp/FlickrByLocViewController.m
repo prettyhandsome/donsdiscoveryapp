@@ -15,7 +15,7 @@
 
 {
     NSArray *photoByLocArray;
-    FlickrByLocCell *flickrByLocCell;
+
 }
 
 @end
@@ -153,6 +153,7 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
                                if ( !error )
                                {
                                    UIImage *image = [[UIImage alloc] initWithData:data];
+                                   NSLog(@"hello from inside the block");
                                    completionBlock(YES,image);
                                } else{
                                    completionBlock(NO,nil);
@@ -185,7 +186,7 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
  */
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    flickrByLocCell = [self.flickrByLocationCollectionView dequeueReusableCellWithReuseIdentifier:kLocCellID forIndexPath:indexPath];
+    FlickrByLocCell *flickrByLocCell = [self.flickrByLocationCollectionView dequeueReusableCellWithReuseIdentifier:kLocCellID forIndexPath:indexPath];
     //the documentation says that if you dequeue, the cell will never be nil, so i removed the if cell = nil part.
     
     SourceURLTags *individualPic = [self.locationImagesArray objectAtIndex:indexPath.item];
@@ -194,27 +195,30 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
     //NSData *thumbData = [NSData dataWithContentsOfURL:thumbURL];
     //NSLog(@"link at cell creation:%@", thumbURL);
     //UIImage *thumbnail = [UIImage imageWithData:thumbData];
-    
+    flickrByLocCell.locImageView.image = nil;
     
      [self downloadImageWithURL:thumbURL completionBlock:^(BOOL succeeded, UIImage *image) {
-     if (succeeded) {
-     
-         // change the image in the cell
-     UIImage *thumbnail = image;
-     flickrByLocCell.locImageView.image= thumbnail;
-     
-     // cache the image for use later (when scrolling up)
-         thumbnail = image;
-     }
-     
+         if (succeeded) {
+             
+             // change the image in the cell
+             
+             UIImage *thumbnail = image;
+             FlickrByLocCell *cell =((FlickrByLocCell*)[collectionView cellForItemAtIndexPath:indexPath]);
+             cell.locImageView.image = image;
+             
+             // cache the image for use later (when scrolling up)
+             thumbnail = image;
+         }
+         
       }];
     
     // if we want to select, we can create a custom background class with an image or CGRect.
     //mediaCell.selectedBackgroundView = [[MediaCellSelectedBG alloc] initWithFrame:CGRectZero];
     [self.locViewActivityIndicator stopAnimating];
+    
     return flickrByLocCell;
 }
-      
+    
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 

@@ -13,7 +13,7 @@
 @interface FlickrByTagViewController ()
 {
     NSArray *photoByTagArray;
-    FlickrByTagCell *flickrByTagCell;
+
 }
 @end
 
@@ -138,7 +138,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    flickrByTagCell = [self.taggedItemsCollectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
+    FlickrByTagCell *flickrByTagCell = [self.taggedItemsCollectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
     //the documentation says that if you dequeue, the cell will never be nil, so i removed the if cell = nil part.
     
     SourceURLTags *individualTag = [self.taggedImagesArray objectAtIndex:indexPath.row];
@@ -154,7 +154,8 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
             
             // change the image in the cell
             UIImage *thumbnail = image;
-            flickrByTagCell.tagImageView.image= thumbnail;
+            FlickrByTagCell *cell =((FlickrByTagCell*)[collectionView cellForItemAtIndexPath:indexPath]);
+            cell.tagImageView.image = image;
             
             // cache the image for use later (when scrolling up)
             thumbnail = image;}
