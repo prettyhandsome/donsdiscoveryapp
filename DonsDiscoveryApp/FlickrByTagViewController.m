@@ -147,7 +147,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     //NSData *thumbData = [NSData dataWithContentsOfURL:thumbURL];
     //NSLog(@"link at cell creation:%@", thumbURL);
     //UIImage *thumbnail = [UIImage imageWithData:thumbData];
-    
+    flickrByTagCell.tagImageView.image = nil; 
     
     [self downloadImageWithURL:thumbURL completionBlock:^(BOOL succeeded, UIImage *image) {
         if (succeeded) {
