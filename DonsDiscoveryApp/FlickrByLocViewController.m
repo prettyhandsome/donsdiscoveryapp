@@ -41,6 +41,10 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
 	// Do any additional setup after loading the view.
         
     [self getLatLngForText];
+    
+    //[self.flickrByLocationCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kLocCellID];
+    
+    [self.locViewActivityIndicator startAnimating];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +62,7 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    //[activityIndicator startAnimating];
+   
     
     [NSURLConnection sendAsynchronousRequest:urlRequest
                                        queue:[NSOperationQueue mainQueue]
@@ -73,7 +77,7 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
                                self.latitudeInput = [locationDictionary objectForKey:@"lat"];
                                self.longitudeInput = [locationDictionary objectForKey:@"lng"];
                                
-                               //[activityIndicator stopAnimating];
+                               
                                [self getFlickrJSONData];
                                
                            }];
@@ -93,7 +97,7 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
     
     NSURLRequest *imageByLocRequest = [NSURLRequest requestWithURL: imageByLocURL];
     
-    [self.locViewActivityIndicator startAnimating];
+    //[self.locViewActivityIndicator startAnimating];
     
     
     [NSURLConnection sendAsynchronousRequest:imageByLocRequest
@@ -105,7 +109,7 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
                                NSDictionary *photosbyLocDict =[locRequestDictionary objectForKey:@"photos"];
                                photoByLocArray = [photosbyLocDict objectForKey:@"photo"];
                                
-                               self.locationImagesArray = [[NSMutableArray alloc] initWithCapacity:25];
+                               self.locationImagesArray = [[NSMutableArray alloc] initWithCapacity:100];
                                //capacity can change, as needed.
                                
                                for (NSDictionary *singlePicByLocDict in photoByLocArray) {
@@ -133,7 +137,26 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
                                    NSLog(@"array count = %d", self.locationImagesArray.count);
                                }
                                [self.flickrByLocationCollectionView reloadData];
-                               [self.locViewActivityIndicator stopAnimating];
+                               //[self.locViewActivityIndicator stopAnimating];
+                           }];
+}
+
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    //SourceURLTags *blockTag = [[SourceURLTags alloc] init];
+    //NSURL *blockUrl = [NSURL URLWithString: blockTag.urlStringForTag];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if ( !error )
+                               {
+                                   UIImage *image = [[UIImage alloc] initWithData:data];
+                                   completionBlock(YES,image);
+                               } else{
+                                   completionBlock(NO,nil);
+                               }
                            }];
 }
 
@@ -151,25 +174,47 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
 }
 
 
+
+/*
+ - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+ FlickrPhotoCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"FlickrCell" forIndexPath:indexPath];
+ NSString *searchTerm = self.searches[indexPath.section];
+ cell.photo = self.searchResults[searchTerm]
+ [indexPath.row];
+ return cell;
+ */
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     flickrByLocCell = [self.flickrByLocationCollectionView dequeueReusableCellWithReuseIdentifier:kLocCellID forIndexPath:indexPath];
     //the documentation says that if you dequeue, the cell will never be nil, so i removed the if cell = nil part.
     
-    SourceURLTags *individualPic = [self.locationImagesArray objectAtIndex:indexPath.row];
+    SourceURLTags *individualPic = [self.locationImagesArray objectAtIndex:indexPath.item];
     NSString *thumbURLString =individualPic.urlStringForTag;
     NSURL *thumbURL = [NSURL URLWithString: thumbURLString];
-    NSData *thumbData = [NSData dataWithContentsOfURL:thumbURL];
-    NSLog(@"link at cell creation:%@", thumbURL);
-    UIImage *thumbnail = [UIImage imageWithData:thumbData];
-    flickrByLocCell.locImageView.image= thumbnail;
+    //NSData *thumbData = [NSData dataWithContentsOfURL:thumbURL];
+    //NSLog(@"link at cell creation:%@", thumbURL);
+    //UIImage *thumbnail = [UIImage imageWithData:thumbData];
+    
+    
+     [self downloadImageWithURL:thumbURL completionBlock:^(BOOL succeeded, UIImage *image) {
+     if (succeeded) {
+     
+         // change the image in the cell
+     UIImage *thumbnail = image;
+     flickrByLocCell.locImageView.image= thumbnail;
+     
+     // cache the image for use later (when scrolling up)
+         thumbnail = image;
+     }
+     
+      }];
     
     // if we want to select, we can create a custom background class with an image or CGRect.
     //mediaCell.selectedBackgroundView = [[MediaCellSelectedBG alloc] initWithFrame:CGRectZero];
-    
+    [self.locViewActivityIndicator stopAnimating];
     return flickrByLocCell;
 }
-
+      
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 

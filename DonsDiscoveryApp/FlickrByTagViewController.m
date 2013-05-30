@@ -41,6 +41,11 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 	// Do any additional setup after loading the view.
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 -(void)getFlickrJSONData{
     
@@ -65,7 +70,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                NSDictionary *photosbyTagDict =[tagRequestDictionary objectForKey:@"photos"];
                                photoByTagArray = [photosbyTagDict objectForKey:@"photo"];
                                
-                               self.taggedImagesArray = [[NSMutableArray alloc] initWithCapacity:25];
+                               self.taggedImagesArray = [[NSMutableArray alloc] initWithCapacity:100];
                                //capacity can change, as needed.
                                
                                for (NSDictionary *singlePicByTagDict in photoByTagArray) {
@@ -97,12 +102,25 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                            }];
 }
 
-
-- (void)didReceiveMemoryWarning
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if ( !error )
+                               {
+                                   UIImage *image = [[UIImage alloc] initWithData:data];
+                                   completionBlock(YES,image);
+                               } else{
+                                   completionBlock(NO,nil);
+                               }
+                           }];
 }
+
+
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
@@ -126,14 +144,27 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     SourceURLTags *individualTag = [self.taggedImagesArray objectAtIndex:indexPath.row];
     NSString *thumbURLString =individualTag.urlStringForTag;
     NSURL *thumbURL = [NSURL URLWithString: thumbURLString];
-    NSData *thumbData = [NSData dataWithContentsOfURL:thumbURL];
-    NSLog(@"link at cell creation:%@", thumbURL);
-    UIImage *thumbnail = [UIImage imageWithData:thumbData];
-    flickrByTagCell.tagImageView.image= thumbnail;
+    //NSData *thumbData = [NSData dataWithContentsOfURL:thumbURL];
+    //NSLog(@"link at cell creation:%@", thumbURL);
+    //UIImage *thumbnail = [UIImage imageWithData:thumbData];
+    
+    
+    [self downloadImageWithURL:thumbURL completionBlock:^(BOOL succeeded, UIImage *image) {
+        if (succeeded) {
+            
+            // change the image in the cell
+            UIImage *thumbnail = image;
+            flickrByTagCell.tagImageView.image= thumbnail;
+            
+            // cache the image for use later (when scrolling up)
+            thumbnail = image;}
+    
+    //flickrByTagCell.tagImageView.image= thumbnail;
     flickrByTagCell.tagLabel.text = individualTag.titleForTag;
     
     // if we want to select, we can create a custom background class with an image or CGRect.
     //mediaCell.selectedBackgroundView = [[MediaCellSelectedBG alloc] initWithFrame:CGRectZero];
+    }];
     
     return flickrByTagCell;
 }
