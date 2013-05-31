@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Landing View Controller-->
         <scene sceneID="ESL-8f-tue">
             <objects>
-                <viewController id="jUT-1W-wfV" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="jUT-1W-wfV" customClass="LandingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qIb-VY-xhK">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.8666666666666667" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Nmo-w3-DLT" firstAttribute="top" secondItem="Qzv-Dh-yg0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1VY-yV-Lbo"/>
                             <constraint firstItem="Qzv-Dh-yg0" firstAttribute="top" secondItem="nYX-e4-nZ6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="F4D-Tb-QTl"/>
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amA-VO-x9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="471" y="-366"/>
+            <point key="canvasLocation" x="107" y="-520"/>
         </scene>
         <!--Flickr By Loc View Controller-->
         <scene sceneID="Lqe-Zs-6QV">
@@ -133,6 +133,7 @@
                             <outlet property="delegate" destination="lUS-CF-6g4" id="Juq-vI-ryO"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="mf3-rI-XKw"/>
                     <connections>
                         <outlet property="flickrByLocationCollectionView" destination="i8B-P8-CiP" id="6eA-xq-KST"/>
                         <outlet property="locViewActivityIndicator" destination="1ST-W3-QMv" id="mhS-af-Ji0"/>
@@ -202,6 +203,7 @@
                             <outlet property="delegate" destination="Trh-xB-QU8" id="Md2-PA-nVx"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="1Wk-bV-cBd"/>
                     <connections>
                         <outlet property="activityIndicator" destination="eLo-sg-cUo" id="JZe-7N-ZCL"/>
                         <outlet property="taggedItemsCollectionView" destination="08f-4u-zRr" id="Fke-Ef-Yeu"/>
@@ -304,14 +306,61 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="jUT-1W-wfV" kind="relationship" relationship="rootViewController" id="nrC-Og-gS2"/>
+                        <segue destination="1LV-LS-Dol" kind="relationship" relationship="rootViewController" id="Kdy-NO-Dbw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztu-2k-GNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-55" y="-366"/>
+            <point key="canvasLocation" x="-735" y="-528"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="BgZ-mr-eCl">
+            <objects>
+                <viewController id="1LV-LS-Dol" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="alM-9F-04g">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="rabbit-hole-home.png" translatesAutoresizingMaskIntoConstraints="NO" id="ayd-37-gnj"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhb-sZ-MFq">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="162" id="WBs-97-SWE"/>
+                                    <constraint firstAttribute="height" constant="44" id="mgX-NO-nYG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="connect-white.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectToFSwithButton:" destination="1LV-LS-Dol" eventType="touchUpInside" id="D9R-2l-jO2"/>
+                                    <segue destination="jUT-1W-wfV" kind="push" id="Ybg-Fo-pF5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zhb-sZ-MFq" firstAttribute="centerX" secondItem="ayd-37-gnj" secondAttribute="centerX" type="default" id="5wy-dj-f7T"/>
+                            <constraint firstItem="ayd-37-gnj" firstAttribute="leading" secondItem="alM-9F-04g" secondAttribute="leading" type="default" id="DRg-Pb-x7K"/>
+                            <constraint firstItem="ayd-37-gnj" firstAttribute="bottom" secondItem="alM-9F-04g" secondAttribute="bottom" type="default" id="McY-bH-gjS"/>
+                            <constraint firstItem="zhb-sZ-MFq" firstAttribute="top" secondItem="alM-9F-04g" secondAttribute="top" constant="97" id="o1K-RW-RFf"/>
+                            <constraint firstItem="ayd-37-gnj" firstAttribute="top" secondItem="alM-9F-04g" secondAttribute="top" type="default" id="unH-uN-ewD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="BTv-rG-yqx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zO-C3-QrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-316" y="-528"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="connect-white.png" width="150" height="24"/>
+        <image name="rabbit-hole-home.png" width="320" height="548"/>
+    </resources>
     <classes>
         <class className="FlickrByLocCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrByLocCell.h"/>
@@ -348,6 +397,17 @@
                 <relationship kind="outlet" name="popUpLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="LandingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LandingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="loginWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="searchByLocTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="searchByTagButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchByTagTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="segueForLocViewButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
@@ -366,15 +426,13 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="loginWebView" candidateClass="UIWebView"/>
-                <relationship kind="outlet" name="searchByLocTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="searchByTagButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="searchByTagTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="segueForLocViewButton" candidateClass="UIButton"/>
+                <relationship kind="action" name="connectToFSwithButton:"/>
             </relationships>
         </class>
     </classes>

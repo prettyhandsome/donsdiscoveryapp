@@ -7,18 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KIImagePager.h"
 
-@interface ViewController : UIViewController<UIWebViewDelegate>
+@interface ViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+- (IBAction)connectToFSwithButton:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIButton *searchByTagButton;
-@property (strong, nonatomic) IBOutlet UITextField *searchByTagTextField;
-
-@property (strong, nonatomic) IBOutlet UITextField *searchByLocTextField;
-@property (strong, nonatomic) IBOutlet UIButton *segueForLocViewButton;
-
-@property (strong, nonatomic) IBOutlet UIWebView *loginWebView;
 
 @end

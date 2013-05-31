@@ -26,17 +26,16 @@
 		5BD517B01755B82D00703400 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD517AF1755B82D00703400 /* Default-568h@2x.png */; };
 		5BD517B31755B82D00703400 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD517B11755B82D00703400 /* MainStoryboard.storyboard */; };
 		5BD517B61755B82D00703400 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD517B51755B82D00703400 /* ViewController.m */; };
-		5BD517C11755B85300703400 /* KICamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD517BD1755B85300703400 /* KICamera.png */; };
-		5BD517C21755B85300703400 /* KICamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD517BE1755B85300703400 /* KICamera@2x.png */; };
-		5BD517C31755B85300703400 /* KIImagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD517C01755B85300703400 /* KIImagePager.m */; };
 		5BD517C51755B87D00703400 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD517C41755B87D00703400 /* QuartzCore.framework */; };
 		5BD517C71755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */; };
+		A4673DC717595DF800FD0E6C /* rabbit-hole-home.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DC617595DF800FD0E6C /* rabbit-hole-home.png */; };
+		A4673DC91759616800FD0E6C /* connect-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DC81759616800FD0E6C /* connect-white.png */; };
+		A4673DCC175962F000FD0E6C /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4673DCB175962F000FD0E6C /* LandingViewController.m */; };
 		A4F464F017566ABE008D2C98 /* FlickrByLocCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */; };
 		A4F464F117566ABE008D2C98 /* FlickrByLocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464E917566ABE008D2C98 /* FlickrByLocViewController.m */; };
 		A4F464F217566ABE008D2C98 /* FlickrByTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464EB17566ABE008D2C98 /* FlickrByTagCell.m */; };
 		A4F464F317566ABE008D2C98 /* FlickrByTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464ED17566ABE008D2C98 /* FlickrByTagViewController.m */; };
 		A4F464F417566ABE008D2C98 /* SourceURLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464EF17566ABE008D2C98 /* SourceURLTags.m */; };
-		A4F464F717568363008D2C98 /* SliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464F617568363008D2C98 /* SliderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,12 +68,12 @@
 		5BD517B21755B82D00703400 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		5BD517B41755B82D00703400 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5BD517B51755B82D00703400 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5BD517BD1755B85300703400 /* KICamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KICamera.png; sourceTree = "<group>"; };
-		5BD517BE1755B85300703400 /* KICamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KICamera@2x.png"; sourceTree = "<group>"; };
-		5BD517BF1755B85300703400 /* KIImagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIImagePager.h; sourceTree = "<group>"; };
-		5BD517C01755B85300703400 /* KIImagePager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIImagePager.m; sourceTree = "<group>"; };
 		5BD517C41755B87D00703400 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4413812555_7a16d2c02b_z.jpg; sourceTree = "<group>"; };
+		A4673DC617595DF800FD0E6C /* rabbit-hole-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rabbit-hole-home.png"; sourceTree = "<group>"; };
+		A4673DC81759616800FD0E6C /* connect-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-white.png"; sourceTree = "<group>"; };
+		A4673DCA175962F000FD0E6C /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
+		A4673DCB175962F000FD0E6C /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
 		A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrByLocCell.h; sourceTree = "<group>"; };
 		A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrByLocCell.m; sourceTree = "<group>"; };
 		A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrByLocViewController.h; sourceTree = "<group>"; };
@@ -85,8 +84,6 @@
 		A4F464ED17566ABE008D2C98 /* FlickrByTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrByTagViewController.m; sourceTree = "<group>"; };
 		A4F464EE17566ABE008D2C98 /* SourceURLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceURLTags.h; sourceTree = "<group>"; };
 		A4F464EF17566ABE008D2C98 /* SourceURLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceURLTags.m; sourceTree = "<group>"; };
-		A4F464F517568362008D2C98 /* SliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderViewController.h; sourceTree = "<group>"; };
-		A4F464F617568363008D2C98 /* SliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +162,8 @@
 				5BD517B41755B82D00703400 /* ViewController.h */,
 				5BD517B51755B82D00703400 /* ViewController.m */,
 				5BD517B11755B82D00703400 /* MainStoryboard.storyboard */,
+				A4673DCA175962F000FD0E6C /* LandingViewController.h */,
+				A4673DCB175962F000FD0E6C /* LandingViewController.m */,
 				A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */,
 				A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */,
 				A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */,
@@ -180,10 +179,7 @@
 				29132CF917585EF70087B63A /* Annotation Classes */,
 				A4F464EE17566ABE008D2C98 /* SourceURLTags.h */,
 				A4F464EF17566ABE008D2C98 /* SourceURLTags.m */,
-				A4F464F517568362008D2C98 /* SliderViewController.h */,
-				A4F464F617568363008D2C98 /* SliderViewController.m */,
 				29132CFD175865990087B63A /* UI Elements */,
-				5BD517BC1755B85300703400 /* KIImagePager */,
 				5BD517A01755B82D00703400 /* Supporting Files */,
 			);
 			path = DonsDiscoveryApp;
@@ -192,6 +188,8 @@
 		5BD517A01755B82D00703400 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A4673DC81759616800FD0E6C /* connect-white.png */,
+				A4673DC617595DF800FD0E6C /* rabbit-hole-home.png */,
 				5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */,
 				5BD517A11755B82D00703400 /* DonsDiscoveryApp-Info.plist */,
 				5BD517A21755B82D00703400 /* InfoPlist.strings */,
@@ -202,18 +200,6 @@
 				5BD517AF1755B82D00703400 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5BD517BC1755B85300703400 /* KIImagePager */ = {
-			isa = PBXGroup;
-			children = (
-				5BD517BD1755B85300703400 /* KICamera.png */,
-				5BD517BE1755B85300703400 /* KICamera@2x.png */,
-				5BD517BF1755B85300703400 /* KIImagePager.h */,
-				5BD517C01755B85300703400 /* KIImagePager.m */,
-			);
-			name = KIImagePager;
-			path = ../KIImagePager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,10 +258,10 @@
 				5BD517AE1755B82D00703400 /* Default@2x.png in Resources */,
 				5BD517B01755B82D00703400 /* Default-568h@2x.png in Resources */,
 				5BD517B31755B82D00703400 /* MainStoryboard.storyboard in Resources */,
-				5BD517C11755B85300703400 /* KICamera.png in Resources */,
-				5BD517C21755B85300703400 /* KICamera@2x.png in Resources */,
 				5BD517C71755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg in Resources */,
 				29A2E5DC1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png in Resources */,
+				A4673DC717595DF800FD0E6C /* rabbit-hole-home.png in Resources */,
+				A4673DC91759616800FD0E6C /* connect-white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,18 +275,17 @@
 				5BD517A61755B82D00703400 /* main.m in Sources */,
 				5BD517AA1755B82D00703400 /* AppDelegate.m in Sources */,
 				5BD517B61755B82D00703400 /* ViewController.m in Sources */,
-				5BD517C31755B85300703400 /* KIImagePager.m in Sources */,
 				A4F464F017566ABE008D2C98 /* FlickrByLocCell.m in Sources */,
 				A4F464F117566ABE008D2C98 /* FlickrByLocViewController.m in Sources */,
 				A4F464F217566ABE008D2C98 /* FlickrByTagCell.m in Sources */,
 				A4F464F317566ABE008D2C98 /* FlickrByTagViewController.m in Sources */,
 				A4F464F417566ABE008D2C98 /* SourceURLTags.m in Sources */,
-				A4F464F717568363008D2C98 /* SliderViewController.m in Sources */,
 				296114C817581F360081AE55 /* FlickrTappedViewController.m in Sources */,
 				29132CF5175859980087B63A /* FourSquareVenue.m in Sources */,
 				29132CF817585EE20087B63A /* TappedPhotoAnnotation.m in Sources */,
 				29132CFC175862BD0087B63A /* TappedPhotoAnnotationView.m in Sources */,
 				2905D8AD1758D4B7009E27E1 /* TappedPhotoPopUp.m in Sources */,
+				A4673DCC175962F000FD0E6C /* LandingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

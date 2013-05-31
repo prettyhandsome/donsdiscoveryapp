@@ -9,7 +9,6 @@
 #import "FlickrByLocViewController.h"
 #import "FlickrByLocCell.h"
 #import "SourceURLTags.h"
-#import "SliderViewController.h"
 
 @interface FlickrByLocViewController ()
 
@@ -219,18 +218,18 @@ NSString *kApiKey =@"83992732ed047326809fb0a1cb368e8b";
     return flickrByLocCell;
 }
     
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
-        ((SliderViewController*)(segue.destinationViewController)).locationImagesSlideArray = self.locationImagesArray;
-        
-       // NSLog(@"%d",((FlickrByLocViewController*)(segue.destinationViewController)).locationImagesArray.count);
-    
-}
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"fromLocToSliderSegue" sender:self];
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//
+//        //((SliderViewController*)(segue.destinationViewController)).locationImagesSlideArray = self.locationImagesArray;
+//        
+//       // NSLog(@"%d",((FlickrByLocViewController*)(segue.destinationViewController)).locationImagesArray.count);
+//    
+//}
+//
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+// //   [self performSegueWithIdentifier:@"fromLocToSliderSegue" sender:self];
+//}
 
 @end
