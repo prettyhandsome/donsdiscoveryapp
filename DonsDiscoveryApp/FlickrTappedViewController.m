@@ -128,9 +128,20 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                    tappedPhotoTag = [dictionary objectForKey:@"raw"];
                                    NSLog(@"tapped photo tags are %@",tappedPhotoTag);
                                    
+
                                    [rawTagArray addObject:tappedPhotoTag];
                                    NSLog(@"tapped photo tag ARRAY has %@",rawTagArray);
                                    NSLog (@"there are %i items in the array",rawTagArray.count);
+
+                                   rawTagArray = [[NSMutableArray alloc] init];
+                                   
+                                   //rawTagArray= [dictionary objectForKey:@"raw"];
+                                  
+                                   //This ALWAYS CRASHES THE APP! 
+                                  // NSString *testTag1 = [rawTagArray objectAtIndex:0];
+                                   [rawTagArray addObject:tappedPhotoTag];
+                                   NSLog(@"tapped photo tags are %@",rawTagArray);
+
                                    
 //                                   CLLocationCoordinate2D center = CLLocationCoordinate2DMake([latitude floatValue],[longitude floatValue]);
 //                                   
