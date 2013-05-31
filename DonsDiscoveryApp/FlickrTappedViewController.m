@@ -40,8 +40,8 @@
 @synthesize tappedPhotolongitude;
 @synthesize tappedPhotoTitle;
 @synthesize popUpLabel;
-
 @synthesize latTextLabel;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -120,18 +120,17 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                             
                             NSArray *tagResultsArray= [[[resultsDict objectForKey:@"photo"] objectForKey:@"tags"] objectForKey:@"tag"];
                                
+                               //Instantiate Array here so that it can eventually fill up everything in the loop
+                               rawTagArray = [[NSMutableArray alloc] init];
+                               
                                for (NSDictionary *dictionary in tagResultsArray) {
                                    
                                    tappedPhotoTag = [dictionary objectForKey:@"raw"];
+                                   NSLog(@"tapped photo tags are %@",tappedPhotoTag);
                                    
-                                  // rawTagArray= [dictionary objectForKey:@"raw"];
-                                  
-                                   //This ALWAYS CRASHES THE APP! 
-                                  // NSString *testTag1 = [rawTagArray objectAtIndex:0];
                                    [rawTagArray addObject:tappedPhotoTag];
-                                 //  NSLog(@"tapped photo tags are %@",rawTagArray);
-                                   
-                                   
+                                   NSLog(@"tapped photo tag ARRAY has %@",rawTagArray);
+                                   NSLog (@"there are %i items in the array",rawTagArray.count);
                                    
 //                                   CLLocationCoordinate2D center = CLLocationCoordinate2DMake([latitude floatValue],[longitude floatValue]);
 //                                   
@@ -140,22 +139,21 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 //                                   
 //                                   self.mapView.region = region;
                                   
-                                   
-                                  // [self getFourSquareMapURLData];
-
                                }
+           
                                
-                             [self getFourSquareMapURLData];    
+                             [self getFourSquareMapURLData];
                                
                 }];
     
-  
+   
+    
    // [self dropPinForFlickPhoto];
     
 
     }
 
-#pragma mark Drop a Pin for original Flickr Photo selected (location of it) 
+#pragma mark Drop a Pin for original Flickr Photo selected (location of it)
 
 -(void) dropPinForFlickPhoto {
     
@@ -220,7 +218,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     for (aV in views) {
         
-        // add animation to TappedPhotoAnnotation
+        // add animation to  TappedPhotoAnnotation
         if ([aV.annotation isKindOfClass:[TappedPhotoAnnotationView class]]) {
             continue;
         }
@@ -264,14 +262,14 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     NSString *foursquareClientID=@"MFDIXCKNSUTA01UKTJUUCPDLOU2QX3GA4NAFF4YFHGF1KDXH";
     NSString *foursquareClientSecret =@"S5MZYU1VDCK5FT21TYMKUBUYAS4PED30350KQKVBXYJW5IPJ";
-    NSString *tagQueries = tappedPhotoTag;
-    //tagQueries = [tagQueries stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    //NSString *tagQuery1 = [rawTagArray value];
-//    NSString *tagQuery2= [rawTagArray objectAtIndex:2];
+    NSString *tagQuery1= [rawTagArray objectAtIndex:0];
+    NSString *tagQuery2 = [rawTagArray objectAtIndex:1];
+    NSLog(@"the first tag is %@",tagQuery1);
+    NSLog(@"the second tag is %@",tagQuery2);
 
     
-    NSString *venuesCloseToPhotoLocationURLString= [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%@,%@&radius=50000&client_id=%@&client_secret=%@&v=20130530",tappedPhotolatitude,tappedPhotolongitude,foursquareClientID,foursquareClientSecret];
+    NSString *venuesCloseToPhotoLocationURLString= [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%@,%@&radius=50000&query=%@&%@&client_id=%@&client_secret=%@&v=20130530",tappedPhotolatitude,tappedPhotolongitude,tagQuery1,tagQuery2 ,foursquareClientID,foursquareClientSecret];
+
     
     venuesCloseToPhotoLocationURLString = [venuesCloseToPhotoLocationURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
