@@ -220,7 +220,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     for (aV in views) {
         
-        // Don't pin drop if annotation is TappedPhotoAnnotation
+        // add animation to TappedPhotoAnnotation
         if ([aV.annotation isKindOfClass:[TappedPhotoAnnotationView class]]) {
             continue;
         }

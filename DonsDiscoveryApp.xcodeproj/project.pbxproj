@@ -15,6 +15,7 @@
 		29132CFC175862BD0087B63A /* TappedPhotoAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */; };
 		29132CFF175865B60087B63A /* OrangeMapPin_WithPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */; };
 		296114C817581F360081AE55 /* FlickrTappedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296114C717581F360081AE55 /* FlickrTappedViewController.m */; };
+		29A2E5DC1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */; };
 		5BD5179A1755B82D00703400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD517991755B82D00703400 /* UIKit.framework */; };
 		5BD5179C1755B82D00703400 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD5179B1755B82D00703400 /* Foundation.framework */; };
 		5BD5179E1755B82D00703400 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD5179D1755B82D00703400 /* CoreGraphics.framework */; };
@@ -53,6 +54,7 @@
 		29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrangeMapPin_WithPhoto.png; path = "../../../Documents/iPhone UI Templates/Map Elements/OrangeMapPin_WithPhoto.png"; sourceTree = "<group>"; };
 		296114C617581F360081AE55 /* FlickrTappedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTappedViewController.h; sourceTree = "<group>"; };
 		296114C717581F360081AE55 /* FlickrTappedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTappedViewController.m; sourceTree = "<group>"; };
+		29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeMapPin_WithPhoto.png; sourceTree = "<group>"; };
 		5BD517961755B82D00703400 /* DonsDiscoveryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonsDiscoveryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD517991755B82D00703400 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5BD5179B1755B82D00703400 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -192,6 +194,7 @@
 		5BD517A01755B82D00703400 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */,
 				5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */,
 				5BD517A11755B82D00703400 /* DonsDiscoveryApp-Info.plist */,
 				5BD517A21755B82D00703400 /* InfoPlist.strings */,
@@ -276,6 +279,7 @@
 				5BD517C21755B85300703400 /* KICamera@2x.png in Resources */,
 				5BD517C71755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg in Resources */,
 				29132CFF175865B60087B63A /* OrangeMapPin_WithPhoto.png in Resources */,
+				29A2E5DC1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
