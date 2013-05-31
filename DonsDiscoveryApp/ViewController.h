@@ -11,8 +11,9 @@
 
 @interface ViewController : UIViewController<UIWebViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIButton *searchByTagButton;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+@property (strong, nonatomic) IBOutlet UIButton *searchByTagButton;
 @property (strong, nonatomic) IBOutlet UITextField *searchByTagTextField;
 
 @property (strong, nonatomic) IBOutlet UITextField *searchByLocTextField;

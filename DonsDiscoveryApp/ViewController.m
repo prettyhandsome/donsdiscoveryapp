@@ -25,14 +25,13 @@ NSString *kRedirectURI = @"app://testapp123";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.loginWebView = [[UIWebView alloc] initWithFrame:self.view.frame];
 
-    //what's this error about
+    self.loginWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     self.loginWebView.delegate = self;
-    NSString *authenticateURLString = [NSString stringWithFormat:@"https://foursquare.com/oauth2/authenticate?client_id=%@&response_type=token&redirect_uri=%@",kClientID,kRedirectURI];
-    
+
+    NSString *authenticateURLString = [NSString stringWithFormat:@"https://foursquare.com/oauth2/authenticate?client_id=%@&response_type=token&redirect_uri=%@",kClientID,kRedirectURI];    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:authenticateURLString]];
+        NSLog(@"viewDidLoad");
     [self.loginWebView loadRequest:request];
     
     [self.view addSubview:self.loginWebView];
@@ -64,23 +63,18 @@ NSString *kRedirectURI = @"app://testapp123";
     
     if ([URLString rangeOfString:@"access_token="].location != NSNotFound) {
         NSString *accessToken = [[URLString componentsSeparatedByString:@"="] lastObject];
+        NSLog(@"access token ---> %@", accessToken);
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:accessToken forKey:@"access_token"];
         [defaults synchronize];
-        [self.loginWebView removeFromSuperview];
     }
     
-    //ask for help - the api docs suggest cookie usage,and the 'wrapper' contained this. Unfamiliar with best practices for cookie storage.
-    if ([URLString rangeOfString:@"access_token="].length != 0) {
-		NSHTTPCookie *cookie;
-		NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-		for (cookie in [storage cookies]) {
-            
-			if ([[cookie domain]isEqualToString:@"foursquare.com"]) {
-				[storage deleteCookie:cookie];
-			}
-		}
-    }
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    //if (error.code == NSURLErrorNotConnectedToInternet){
+    NSLog(@"You are not connected");
+    [self.loginWebView removeFromSuperview];
 }
 
 //oauth_token=ACCESS_TOKEN  <-- add this to the end of search requests to get user specific results.
