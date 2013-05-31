@@ -10,6 +10,8 @@
 #import "FlickrByLocViewController.h"
 #import "FlickrByTagViewController.h"
 #import "FlickrByTagCell.h"
+#import "FlickrTappedViewController.h"
+
 
 @interface ViewController ()
 
@@ -43,6 +45,7 @@
         ((FlickrByLocViewController*)(segue.destinationViewController)).locText = self.searchByLocTextField.text;
         NSLog(@"%@",((FlickrByLocViewController*)(segue.destinationViewController)).locText );
     }
+    
 }
 
 

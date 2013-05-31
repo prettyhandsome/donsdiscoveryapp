@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="jUT-1W-wfV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="K54-lN-sRf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -34,14 +34,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="84"/>
+            <point key="canvasLocation" x="1321" y="84"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ESL-8f-tue">
             <objects>
                 <viewController id="jUT-1W-wfV" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qIb-VY-xhK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qzv-Dh-yg0">
@@ -85,7 +85,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Trh-xB-QU8" kind="modal" identifier="segueToTaggedView" id="1GF-lN-Nj6"/>
+                                    <segue destination="Trh-xB-QU8" kind="push" identifier="segueToTaggedView" id="1GF-lN-Nj6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -107,6 +107,7 @@
                             <constraint firstItem="4gC-FU-7xk" firstAttribute="leading" secondItem="qIb-VY-xhK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="u20-xx-wgE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vY8-eE-aPP"/>
                     <connections>
                         <outlet property="searchByLocTextField" destination="CTf-HZ-9gs" id="3lO-Yv-pFC"/>
                         <outlet property="searchByTagButton" destination="Nmo-w3-DLT" id="ZJf-HB-CnI"/>
@@ -116,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amA-VO-x9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-55" y="-366"/>
+            <point key="canvasLocation" x="471" y="-366"/>
         </scene>
         <!--Flickr By Loc View Controller-->
         <scene sceneID="Lqe-Zs-6QV">
@@ -156,7 +157,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="locImageView" destination="R25-qQ-dg1" id="0YW-GO-sqE"/>
-                                    <segue destination="2" kind="modal" identifier="fromLocToSliderSegue" id="Q0G-8k-Kj3"/>
+                                    <segue destination="2" kind="modal" identifier="" id="Q0G-8k-Kj3"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -172,14 +173,14 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFO-Y6-b3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="84"/>
+            <point key="canvasLocation" x="930" y="84"/>
         </scene>
         <!--Flickr By Tag View Controller-->
         <scene sceneID="NtH-T3-pfq">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Trh-xB-QU8" customClass="FlickrByTagViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="08f-4u-zRr">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="95C-ef-zfj">
@@ -189,7 +190,7 @@
                             <inset key="sectionInset" minX="25" minY="10" maxX="25" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" style="whiteLarge" id="eLo-sg-cUo">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <cells>
@@ -225,6 +226,7 @@
                                 <connections>
                                     <outlet property="tagImageView" destination="JJZ-e2-xSW" id="SdK-tj-YWw"/>
                                     <outlet property="tagLabel" destination="U7Q-zv-isb" id="dB1-DV-Fgc"/>
+                                    <segue destination="GE4-Ee-AWe" kind="push" identifier="pushToDetails" id="j2r-v6-96f"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -240,7 +242,107 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1M3-mf-PPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="414" y="-625"/>
+            <point key="canvasLocation" x="940" y="-625"/>
+        </scene>
+        <!--Flickr Tapped View Controller-->
+        <scene sceneID="IuQ-7O-7Vo">
+            <objects>
+                <viewController id="GE4-Ee-AWe" customClass="FlickrTappedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rlu-Pm-Kc0">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Latitude:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOc-Ra-lRv">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="blank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtd-3L-hi9">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="blank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fc-r3-EOT">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Longitude:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW5-V6-D2N">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hol-ha-DEW">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="310" id="E8G-2w-TOn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="GE4-Ee-AWe" id="JmT-K9-gFO"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cu9-cQ-zIm" customClass="TappedPhotoPopUp">
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDd-0y-QFg">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="JDd-0y-QFg" firstAttribute="trailing" secondItem="cu9-cQ-zIm" secondAttribute="trailing" type="default" id="2Ht-3a-2lL"/>
+                                    <constraint firstItem="JDd-0y-QFg" firstAttribute="top" secondItem="cu9-cQ-zIm" secondAttribute="top" constant="23" id="aQY-oH-Rg2"/>
+                                    <constraint firstItem="JDd-0y-QFg" firstAttribute="leading" secondItem="cu9-cQ-zIm" secondAttribute="leading" type="default" id="ieB-oD-oL9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hol-ha-DEW" firstAttribute="top" secondItem="rlu-Pm-Kc0" secondAttribute="top" type="default" id="80R-FW-m6M"/>
+                            <constraint firstItem="LW5-V6-D2N" firstAttribute="leading" secondItem="ZOc-Ra-lRv" secondAttribute="leading" type="default" id="Ck1-BS-E8N"/>
+                            <constraint firstItem="cu9-cQ-zIm" firstAttribute="centerX" secondItem="9fc-r3-EOT" secondAttribute="centerX" type="default" id="FfC-Nh-U1t"/>
+                            <constraint firstItem="LW5-V6-D2N" firstAttribute="top" secondItem="rlu-Pm-Kc0" secondAttribute="top" constant="112" id="OZH-ZP-XmF"/>
+                            <constraint firstItem="Xtd-3L-hi9" firstAttribute="baseline" secondItem="ZOc-Ra-lRv" secondAttribute="baseline" type="default" id="Rau-B0-ueA"/>
+                            <constraint firstItem="9fc-r3-EOT" firstAttribute="leading" secondItem="Xtd-3L-hi9" secondAttribute="leading" type="default" id="Rw4-sm-JGR"/>
+                            <constraint firstItem="Xtd-3L-hi9" firstAttribute="leading" secondItem="rlu-Pm-Kc0" secondAttribute="leading" constant="136" id="Vs7-TL-uTo"/>
+                            <constraint firstItem="cu9-cQ-zIm" firstAttribute="leading" secondItem="rlu-Pm-Kc0" secondAttribute="leading" constant="6" id="baP-ZJ-yLc"/>
+                            <constraint firstItem="cu9-cQ-zIm" firstAttribute="top" secondItem="rlu-Pm-Kc0" secondAttribute="top" constant="329" id="eTd-EF-roG"/>
+                            <constraint firstItem="hol-ha-DEW" firstAttribute="trailing" secondItem="rlu-Pm-Kc0" secondAttribute="trailing" type="default" id="hlS-kb-bbc"/>
+                            <constraint firstItem="hol-ha-DEW" firstAttribute="leading" secondItem="rlu-Pm-Kc0" secondAttribute="leading" type="default" id="m1y-6U-VbL"/>
+                            <constraint firstItem="ZOc-Ra-lRv" firstAttribute="top" secondItem="rlu-Pm-Kc0" secondAttribute="top" constant="63" id="qcq-EQ-9CW"/>
+                            <constraint firstAttribute="bottom" secondItem="cu9-cQ-zIm" secondAttribute="bottom" constant="151" id="s7a-pd-nQu"/>
+                            <constraint firstItem="ZOc-Ra-lRv" firstAttribute="leading" secondItem="rlu-Pm-Kc0" secondAttribute="leading" constant="39" id="tlf-cn-zDJ"/>
+                            <constraint firstItem="9fc-r3-EOT" firstAttribute="baseline" secondItem="LW5-V6-D2N" secondAttribute="baseline" type="default" id="uuQ-0Z-o9J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="41T-cT-uNf"/>
+                    <connections>
+                        <outlet property="latTextLabel" destination="Xtd-3L-hi9" id="QqT-eK-c6I"/>
+                        <outlet property="mapView" destination="hol-ha-DEW" id="mSc-sY-cuV"/>
+                        <outlet property="popUpLabel" destination="JDd-0y-QFg" id="rBV-z3-5sD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="knd-og-Hcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="-636"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pcR-SH-DU7">
+            <objects>
+                <navigationController id="K54-lN-sRf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06L-1c-Ian">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jUT-1W-wfV" kind="relationship" relationship="rootViewController" id="nrC-Og-gS2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ztu-2k-GNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-55" y="-366"/>
         </scene>
     </scenes>
     <classes>
@@ -271,6 +373,14 @@
                 <relationship kind="outlet" name="taggedItemsCollectionView" candidateClass="UICollectionView"/>
             </relationships>
         </class>
+        <class className="FlickrTappedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrTappedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="latTextLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="popUpLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="KIImagePager" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/KIImagePager.h"/>
             <relationships>
@@ -287,6 +397,9 @@
                 <relationship kind="outlet" name="imagePager" candidateClass="KIImagePager"/>
             </relationships>
         </class>
+        <class className="TappedPhotoPopUp" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TappedPhotoPopUp.h"/>
+        </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
         </class>
@@ -298,9 +411,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>

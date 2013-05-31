@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlickrByTagCell : UICollectionViewCell
+@interface FlickrByTagCell : UICollectionViewCell <UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *tagImageView;
 @property (strong, nonatomic) IBOutlet UILabel *tagLabel;

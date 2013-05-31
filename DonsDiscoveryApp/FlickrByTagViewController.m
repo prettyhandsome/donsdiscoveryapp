@@ -9,10 +9,12 @@
 #import "FlickrByTagViewController.h"
 #import "FlickrByTagCell.h"
 #import "SourceURLTags.h"
+#import "FlickrTappedViewController.h"
 
 @interface FlickrByTagViewController ()
 {
     NSArray *photoByTagArray;
+    NSString *idForTag;
 
 }
 @end
@@ -52,7 +54,8 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     NSString *replaceString= [self.tagText stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     NSLog(@"string=%@", replaceString);
     
-    NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&format=json&nojsoncallback=1&tags=%@", kApiKeyAgain, replaceString];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&api_key=%@&format=json&nojsoncallback=1&tags=%@", kApiKeyAgain, replaceString];
+
     
     NSURL *imageByTagURL = [NSURL URLWithString:urlString];
     
@@ -76,11 +79,13 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                for (NSDictionary *singlePicByTagDict in photoByTagArray) {
     
                                    NSString *titleForTag = [singlePicByTagDict objectForKey:@"title"];
-                                   NSString *idForTag = [singlePicByTagDict objectForKey:@"id"];
+                                   idForTag = [singlePicByTagDict objectForKey:@"id"];
                                    NSString *secretForTag =[singlePicByTagDict objectForKey:@"secret"];
                                    NSString *serverForTag = [singlePicByTagDict objectForKey:@"server"];
                                    NSString *farmForTag = [singlePicByTagDict objectForKey:@"farm"];
                                    NSString *urlForTaggedPic = [NSString stringWithFormat:@"http://farm%@.staticflickr.com/%@/%@_%@.jpg", farmForTag, serverForTag, idForTag, secretForTag];
+                                   
+                                   //NSString *latForPic = [singlePicByTagDict objectForKey:@"lat"];
                                    
                         
                                    SourceURLTags *sourceURLTag = [[SourceURLTags alloc] init];
@@ -169,6 +174,27 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     return flickrByTagCell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+     [self performSegueWithIdentifier:@"pushToDetails" sender:self];
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+    {
+        
+        if ([[segue identifier] isEqualToString:@"pushToDetails"]){
+        
+            
+            NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+            NSString *photoIdToPush = [photoByTagArray valueForKey:@"id"][selectedIndexPath.row];
+            ((FlickrTappedViewController*)(segue.destinationViewController)).photoTappedID = photoIdToPush;
+        
+    NSLog(@"photo ID to push is %@",photoIdToPush);
+
+}
+    }
 
 
 @end

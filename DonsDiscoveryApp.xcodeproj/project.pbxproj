@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2905D8AD1758D4B7009E27E1 /* TappedPhotoPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2905D8AC1758D4B7009E27E1 /* TappedPhotoPopUp.m */; };
+		29132CF017584B590087B63A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29132CEF17584B590087B63A /* MapKit.framework */; };
+		29132CF217584B5E0087B63A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29132CF117584B5E0087B63A /* CoreLocation.framework */; };
+		29132CF5175859980087B63A /* FourSquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CF4175859980087B63A /* FourSquareVenue.m */; };
+		29132CF817585EE20087B63A /* TappedPhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CF717585EE10087B63A /* TappedPhotoAnnotation.m */; };
+		29132CFC175862BD0087B63A /* TappedPhotoAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */; };
+		29132CFF175865B60087B63A /* OrangeMapPin_WithPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */; };
+		296114C817581F360081AE55 /* FlickrTappedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296114C717581F360081AE55 /* FlickrTappedViewController.m */; };
 		5BD5179A1755B82D00703400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD517991755B82D00703400 /* UIKit.framework */; };
 		5BD5179C1755B82D00703400 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD5179B1755B82D00703400 /* Foundation.framework */; };
 		5BD5179E1755B82D00703400 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD5179D1755B82D00703400 /* CoreGraphics.framework */; };
@@ -32,6 +40,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2905D8AB1758D4B7009E27E1 /* TappedPhotoPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TappedPhotoPopUp.h; sourceTree = "<group>"; };
+		2905D8AC1758D4B7009E27E1 /* TappedPhotoPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoPopUp.m; sourceTree = "<group>"; };
+		29132CEF17584B590087B63A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		29132CF117584B5E0087B63A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		29132CF3175859980087B63A /* FourSquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquareVenue.h; sourceTree = "<group>"; };
+		29132CF4175859980087B63A /* FourSquareVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourSquareVenue.m; sourceTree = "<group>"; };
+		29132CF617585EE10087B63A /* TappedPhotoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TappedPhotoAnnotation.h; sourceTree = "<group>"; };
+		29132CF717585EE10087B63A /* TappedPhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoAnnotation.m; sourceTree = "<group>"; };
+		29132CFA175862BC0087B63A /* TappedPhotoAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TappedPhotoAnnotationView.h; sourceTree = "<group>"; };
+		29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoAnnotationView.m; sourceTree = "<group>"; };
+		29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrangeMapPin_WithPhoto.png; path = "../../../Documents/iPhone UI Templates/Map Elements/OrangeMapPin_WithPhoto.png"; sourceTree = "<group>"; };
+		296114C617581F360081AE55 /* FlickrTappedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTappedViewController.h; sourceTree = "<group>"; };
+		296114C717581F360081AE55 /* FlickrTappedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTappedViewController.m; sourceTree = "<group>"; };
 		5BD517961755B82D00703400 /* DonsDiscoveryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonsDiscoveryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD517991755B82D00703400 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5BD5179B1755B82D00703400 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,6 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29132CF217584B5E0087B63A /* CoreLocation.framework in Frameworks */,
+				29132CF017584B590087B63A /* MapKit.framework in Frameworks */,
 				5BD517C51755B87D00703400 /* QuartzCore.framework in Frameworks */,
 				5BD5179A1755B82D00703400 /* UIKit.framework in Frameworks */,
 				5BD5179C1755B82D00703400 /* Foundation.framework in Frameworks */,
@@ -83,6 +106,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29132CF917585EF70087B63A /* Annotation Classes */ = {
+			isa = PBXGroup;
+			children = (
+				29132CFA175862BC0087B63A /* TappedPhotoAnnotationView.h */,
+				29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */,
+				29132CF717585EE10087B63A /* TappedPhotoAnnotation.m */,
+				29132CF617585EE10087B63A /* TappedPhotoAnnotation.h */,
+				29132CF4175859980087B63A /* FourSquareVenue.m */,
+				29132CF3175859980087B63A /* FourSquareVenue.h */,
+			);
+			name = "Annotation Classes";
+			sourceTree = "<group>";
+		};
+		29132CFD175865990087B63A /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */,
+			);
+			name = "UI Elements";
+			sourceTree = "<group>";
+		};
 		5BD5178D1755B82D00703400 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +147,8 @@
 		5BD517981755B82D00703400 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29132CEF17584B590087B63A /* MapKit.framework */,
+				29132CF117584B5E0087B63A /* CoreLocation.framework */,
 				5BD517C41755B87D00703400 /* QuartzCore.framework */,
 				5BD517991755B82D00703400 /* UIKit.framework */,
 				5BD5179B1755B82D00703400 /* Foundation.framework */,
@@ -127,10 +173,16 @@
 				A4F464EB17566ABE008D2C98 /* FlickrByTagCell.m */,
 				A4F464EC17566ABE008D2C98 /* FlickrByTagViewController.h */,
 				A4F464ED17566ABE008D2C98 /* FlickrByTagViewController.m */,
+				296114C617581F360081AE55 /* FlickrTappedViewController.h */,
+				296114C717581F360081AE55 /* FlickrTappedViewController.m */,
+				2905D8AB1758D4B7009E27E1 /* TappedPhotoPopUp.h */,
+				2905D8AC1758D4B7009E27E1 /* TappedPhotoPopUp.m */,
+				29132CF917585EF70087B63A /* Annotation Classes */,
 				A4F464EE17566ABE008D2C98 /* SourceURLTags.h */,
 				A4F464EF17566ABE008D2C98 /* SourceURLTags.m */,
 				A4F464F517568362008D2C98 /* SliderViewController.h */,
 				A4F464F617568363008D2C98 /* SliderViewController.m */,
+				29132CFD175865990087B63A /* UI Elements */,
 				5BD517BC1755B85300703400 /* KIImagePager */,
 				5BD517A01755B82D00703400 /* Supporting Files */,
 			);
@@ -223,6 +275,7 @@
 				5BD517C11755B85300703400 /* KICamera.png in Resources */,
 				5BD517C21755B85300703400 /* KICamera@2x.png in Resources */,
 				5BD517C71755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg in Resources */,
+				29132CFF175865B60087B63A /* OrangeMapPin_WithPhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +296,11 @@
 				A4F464F317566ABE008D2C98 /* FlickrByTagViewController.m in Sources */,
 				A4F464F417566ABE008D2C98 /* SourceURLTags.m in Sources */,
 				A4F464F717568363008D2C98 /* SliderViewController.m in Sources */,
+				296114C817581F360081AE55 /* FlickrTappedViewController.m in Sources */,
+				29132CF5175859980087B63A /* FourSquareVenue.m in Sources */,
+				29132CF817585EE20087B63A /* TappedPhotoAnnotation.m in Sources */,
+				29132CFC175862BD0087B63A /* TappedPhotoAnnotationView.m in Sources */,
+				2905D8AD1758D4B7009E27E1 /* TappedPhotoPopUp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

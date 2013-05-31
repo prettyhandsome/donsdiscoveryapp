@@ -17,5 +17,9 @@
 @property (strong, nonatomic) NSString *urlStringForTag;
 @property (strong, nonatomic) NSString *titleForTag;
 
+// accuracy=11 // has_geo=1, geo_context=2 (optional - outdoors only=2 ),
+
+// has_geo=1 in URL string in FlickrViewController.m
+
 
 @end
