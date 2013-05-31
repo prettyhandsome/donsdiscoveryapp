@@ -124,12 +124,14 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                    
                                    tappedPhotoTag = [dictionary objectForKey:@"raw"];
                                    
-                                  // rawTagArray= [dictionary objectForKey:@"raw"];
+                                   rawTagArray = [[NSMutableArray alloc] init];
+                                   
+                                   //rawTagArray= [dictionary objectForKey:@"raw"];
                                   
                                    //This ALWAYS CRASHES THE APP! 
                                   // NSString *testTag1 = [rawTagArray objectAtIndex:0];
                                    [rawTagArray addObject:tappedPhotoTag];
-                                 //  NSLog(@"tapped photo tags are %@",rawTagArray);
+                                   NSLog(@"tapped photo tags are %@",rawTagArray);
                                    
                                    
                                    

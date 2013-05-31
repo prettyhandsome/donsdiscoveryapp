@@ -13,7 +13,6 @@
 		29132CF5175859980087B63A /* FourSquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CF4175859980087B63A /* FourSquareVenue.m */; };
 		29132CF817585EE20087B63A /* TappedPhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CF717585EE10087B63A /* TappedPhotoAnnotation.m */; };
 		29132CFC175862BD0087B63A /* TappedPhotoAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */; };
-		29132CFF175865B60087B63A /* OrangeMapPin_WithPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */; };
 		296114C817581F360081AE55 /* FlickrTappedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296114C717581F360081AE55 /* FlickrTappedViewController.m */; };
 		29A2E5DC1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */; };
 		5BD5179A1755B82D00703400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD517991755B82D00703400 /* UIKit.framework */; };
@@ -51,7 +50,6 @@
 		29132CF717585EE10087B63A /* TappedPhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoAnnotation.m; sourceTree = "<group>"; };
 		29132CFA175862BC0087B63A /* TappedPhotoAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TappedPhotoAnnotationView.h; sourceTree = "<group>"; };
 		29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoAnnotationView.m; sourceTree = "<group>"; };
-		29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OrangeMapPin_WithPhoto.png; path = "../../../Documents/iPhone UI Templates/Map Elements/OrangeMapPin_WithPhoto.png"; sourceTree = "<group>"; };
 		296114C617581F360081AE55 /* FlickrTappedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTappedViewController.h; sourceTree = "<group>"; };
 		296114C717581F360081AE55 /* FlickrTappedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTappedViewController.m; sourceTree = "<group>"; };
 		29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeMapPin_WithPhoto.png; sourceTree = "<group>"; };
@@ -124,7 +122,7 @@
 		29132CFD175865990087B63A /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
-				29132CFE175865B60087B63A /* OrangeMapPin_WithPhoto.png */,
+				29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
@@ -194,7 +192,6 @@
 		5BD517A01755B82D00703400 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */,
 				5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */,
 				5BD517A11755B82D00703400 /* DonsDiscoveryApp-Info.plist */,
 				5BD517A21755B82D00703400 /* InfoPlist.strings */,
@@ -278,7 +275,6 @@
 				5BD517C11755B85300703400 /* KICamera.png in Resources */,
 				5BD517C21755B85300703400 /* KICamera@2x.png in Resources */,
 				5BD517C71755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg in Resources */,
-				29132CFF175865B60087B63A /* OrangeMapPin_WithPhoto.png in Resources */,
 				29A2E5DC1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
