@@ -175,10 +175,6 @@
 				A4673DCB175962F000FD0E6C /* LandingViewController.m */,
 				A4673DD9175A7E2400FD0E6C /* BunnyTail.h */,
 				A4673DDA175A7E2400FD0E6C /* BunnyTail.m */,
-				A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */,
-				A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */,
-				A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */,
-				A4F464E917566ABE008D2C98 /* FlickrByLocViewController.m */,
 				A4F464EA17566ABE008D2C98 /* FlickrByTagCell.h */,
 				A4F464EB17566ABE008D2C98 /* FlickrByTagCell.m */,
 				A4F464EC17566ABE008D2C98 /* FlickrByTagViewController.h */,
@@ -190,6 +186,7 @@
 				29132CF917585EF70087B63A /* Annotation Classes */,
 				A4F464EE17566ABE008D2C98 /* SourceURLTags.h */,
 				A4F464EF17566ABE008D2C98 /* SourceURLTags.m */,
+				A4673DDD175ADCB700FD0E6C /* _unused Flickr by Location ViewCont. & Cell */,
 				29132CFD175865990087B63A /* UI Elements */,
 				5BD517A01755B82D00703400 /* Supporting Files */,
 			);
@@ -214,6 +211,17 @@
 				5BD517AF1755B82D00703400 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4673DDD175ADCB700FD0E6C /* _unused Flickr by Location ViewCont. & Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */,
+				A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */,
+				A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */,
+				A4F464E917566ABE008D2C98 /* FlickrByLocViewController.m */,
+			);
+			name = "_unused Flickr by Location ViewCont. & Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

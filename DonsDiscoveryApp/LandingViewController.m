@@ -50,7 +50,7 @@ NSString *kRedirectURI = @"app://testapp123";
     [self.view addSubview:self.loginWebView];
     
 // related to table view for generating tag search collection, and segue to gallery view
-    self.landingOptions = [NSArray arrayWithObjects: @"food", @"drink", @"arts & culture", @"events", @"feeling lucky", nil];
+    self.landingOptions = [NSArray arrayWithObjects: @"food", @"drink", @"art & architecture", @"events", @"feeling lucky", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,7 +59,8 @@ NSString *kRedirectURI = @"app://testapp123";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark --login to Foursquare
+#pragma 
+#pragma mark Login to Foursquare
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -94,7 +95,8 @@ NSString *kRedirectURI = @"app://testapp123";
 
 //oauth_token=ACCESS_TOKEN  <-- add this to the end of search requests to get user specific results.
 
-#pragma mark - Table view data source
+#pragma
+#pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -129,12 +131,13 @@ NSString *kRedirectURI = @"app://testapp123";
     return cell;
 }
 
-
-#pragma --segue to search collection
+#pragma
+#pragma mark Segue to search collection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     self.searchStringOption = [self.landingOptions objectAtIndex:indexPath.row];
+     [self.landingOptionsTableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [self performSegueWithIdentifier:@"segueToTaggedView" sender:self];
 }
@@ -145,6 +148,7 @@ NSString *kRedirectURI = @"app://testapp123";
         ((FlickrByTagViewController*)(segue.destinationViewController)).tagText = self.searchStringOption;
 
         NSLog(@"%@",((FlickrByTagViewController*)(segue.destinationViewController)).tagText );
+   
 }
 
 @end
