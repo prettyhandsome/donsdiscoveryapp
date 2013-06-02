@@ -11,9 +11,13 @@
 #import "FlickrByTagViewController.h"
 #import "FlickrByTagCell.h"
 #import "FlickrTappedViewController.h"
+#import "BunnyTail.h"
 
 
 @interface LandingViewController ()
+
+@property (strong, nonatomic) NSArray *landingOptions;
+@property (strong, nonatomic) NSString *searchStringOption; 
 
 @end
 
@@ -35,16 +39,18 @@ NSString *kRedirectURI = @"app://testapp123";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+//login to foursquare items
     self.loginWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     self.loginWebView.delegate = self;
-    
     NSString *authenticateURLString = [NSString stringWithFormat:@"https://foursquare.com/oauth2/authenticate?client_id=%@&response_type=token&redirect_uri=%@",kClientID,kRedirectURI];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:authenticateURLString]];
     NSLog(@"viewDidLoad");
     [self.loginWebView loadRequest:request];
-    
     [self.view addSubview:self.loginWebView];
+    
+// related to table view for generating tag search collection, and segue to gallery view
+    self.landingOptions = [NSArray arrayWithObjects: @"food", @"drink", @"arts & culture", @"events", @"feeling lucky", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +59,7 @@ NSString *kRedirectURI = @"app://testapp123";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark --login to Foursquare
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -61,7 +68,6 @@ NSString *kRedirectURI = @"app://testapp123";
         return NO;
     }
     return YES;
-    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -82,26 +88,63 @@ NSString *kRedirectURI = @"app://testapp123";
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     //if (error.code == NSURLErrorNotConnectedToInternet){
-    NSLog(@"You are not connected");
+    NSLog(@"Either logged in or offline.");
     [self.loginWebView removeFromSuperview];
 }
 
 //oauth_token=ACCESS_TOKEN  <-- add this to the end of search requests to get user specific results.
 
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return self.landingOptions.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: identifier];
+    
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:identifier];
+    }
+    
+    UIImage *background = [UIImage imageNamed:@"grassyTableCell.png"];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:background];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.text = [self.landingOptions objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    
+    
+    return cell;
+}
+
+
+#pragma --segue to search collection
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.searchStringOption = [self.landingOptions objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:@"segueToTaggedView" sender:self];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+
     
-    if ([[segue identifier] isEqualToString:@"segueToTaggedView"])
-    {
-        ((FlickrByTagViewController*)(segue.destinationViewController)).tagText = self.searchByTagTextField.text;
+        ((FlickrByTagViewController*)(segue.destinationViewController)).tagText = self.searchStringOption;
+
         NSLog(@"%@",((FlickrByTagViewController*)(segue.destinationViewController)).tagText );
-    }
-    
-    if ([[segue identifier] isEqualToString:@"segueToLocationView"]){
-        
-        ((FlickrByLocViewController*)(segue.destinationViewController)).locText = self.searchByLocTextField.text;
-        NSLog(@"%@",((FlickrByLocViewController*)(segue.destinationViewController)).locText );
-    }
-    
 }
 
 @end

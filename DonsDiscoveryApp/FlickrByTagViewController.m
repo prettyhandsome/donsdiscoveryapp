@@ -13,10 +13,18 @@
 
 @interface FlickrByTagViewController ()
 {
+//location items:
+
+    NSString *currentLatitude;
+    NSString *currentLongitude;
+    
+//collection view items:
     NSArray *photoByTagArray;
     NSString *idForTag;
-
 }
+@property (strong, nonatomic) CLLocationManager *myLocationManager;
+
+
 @end
 
 @implementation FlickrByTagViewController
@@ -36,11 +44,12 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //confirm search tag made it from first VC
     NSLog(@"on second ViewController %@", self.tagText);
+
+    //download the current coord.
+    [self startStandardUpdates];
     
-    [self getFlickrJSONData];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,12 +58,60 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma 
+#pragma - setLocation
+
+- (void)startStandardUpdates
+{
+    // Create the location manager if this object does not already have one.
+    
+    
+    self.myLocationManager = [[CLLocationManager alloc] init];
+    
+    self.myLocationManager.delegate = ((id <CLLocationManagerDelegate>)(self));
+    self.myLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        [self.myLocationManager startUpdatingLocation];
+        //        //can also use startMonitoringSignificantLocationChanges to only access large changes, like cell tower switches
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled" message:@"Please enable location services" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        
+    }
+    //    // Set a movement threshold for new events.
+    self.myLocationManager.distanceFilter = 500;
+    
+    [self.myLocationManager startUpdatingLocation];
+    
+    //can probably stop monitoring again, once the location search string is formed, to save battery life? turn on again as needed?
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *currentLocation = [locations lastObject];
+    currentLatitude = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
+    currentLongitude = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
+    NSLog(@"currently at lat:%f long:%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    
+    [self getFlickrJSONData];
+
+    
+}
+
+
+#pragma 
+#pragma - Get JSON from Flickr
+
 -(void)getFlickrJSONData{
     
-    NSString *replaceString= [self.tagText stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSLog(@"string=%@", replaceString);
+    //tag string as web-friendly
+    NSString *replaceString= [self.tagText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"replace string=%@", replaceString);
     
-    NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&api_key=%@&format=json&nojsoncallback=1&tags=%@", kApiKeyAgain, replaceString];
+    //searches on tag, lat, long.
+    NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&api_key=%@&format=json&nojsoncallback=1&tags=%@&lat=%@&lon=%@", kApiKeyAgain, replaceString, currentLatitude, currentLongitude];
+    NSLog(@"url string: %@",urlString);
 
     
     NSURL *imageByTagURL = [NSURL URLWithString:urlString];
@@ -126,6 +183,8 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 }
 
 
+#pragma
+#pragma - Set Table View
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
@@ -149,9 +208,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     SourceURLTags *individualTag = [self.taggedImagesArray objectAtIndex:indexPath.row];
     NSString *thumbURLString =individualTag.urlStringForTag;
     NSURL *thumbURL = [NSURL URLWithString: thumbURLString];
-    //NSData *thumbData = [NSData dataWithContentsOfURL:thumbURL];
-    //NSLog(@"link at cell creation:%@", thumbURL);
-    //UIImage *thumbnail = [UIImage imageWithData:thumbData];
+    
     flickrByTagCell.tagImageView.image = nil; 
     
     [self downloadImageWithURL:thumbURL completionBlock:^(BOOL succeeded, UIImage *image) {
@@ -169,11 +226,15 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     flickrByTagCell.tagLabel.text = individualTag.titleForTag;
     
     // if we want to select, we can create a custom background class with an image or CGRect.
-    //mediaCell.selectedBackgroundView = [[MediaCellSelectedBG alloc] initWithFrame:CGRectZero];
+    //flickrByTagCell.selectedBackgroundView = [[MediaCellSelectedBG alloc] initWithFrame:CGRectZero];
     }];
     
     return flickrByTagCell;
 }
+
+
+#pragma
+#pragma - Segue Prep & Send
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
