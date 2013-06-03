@@ -31,13 +31,13 @@
 		5BD517B61755B82D00703400 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD517B51755B82D00703400 /* ViewController.m */; };
 		5BD517C51755B87D00703400 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD517C41755B87D00703400 /* QuartzCore.framework */; };
 		5BD517C71755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */; };
-		A4673DC717595DF800FD0E6C /* rabbit-hole-home.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DC617595DF800FD0E6C /* rabbit-hole-home.png */; };
 		A4673DC91759616800FD0E6C /* connect-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DC81759616800FD0E6C /* connect-white.png */; };
 		A4673DCC175962F000FD0E6C /* LandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4673DCB175962F000FD0E6C /* LandingViewController.m */; };
 		A4673DD0175A745B00FD0E6C /* grassyTableCell.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DCF175A745B00FD0E6C /* grassyTableCell.png */; };
 		A4673DD7175A7B5300FD0E6C /* rabbit-hole-landing.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DD5175A7B5300FD0E6C /* rabbit-hole-landing.png */; };
 		A4673DD8175A7B5300FD0E6C /* rabbit-hole-landingTail.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DD6175A7B5300FD0E6C /* rabbit-hole-landingTail.png */; };
 		A4673DDB175A7E2400FD0E6C /* BunnyTail.m in Sources */ = {isa = PBXBuildFile; fileRef = A4673DDA175A7E2400FD0E6C /* BunnyTail.m */; };
+		A4673E06175D27DA00FD0E6C /* rabbit-hole-home.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673E05175D27DA00FD0E6C /* rabbit-hole-home.png */; };
 		A4F464F017566ABE008D2C98 /* FlickrByLocCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */; };
 		A4F464F117566ABE008D2C98 /* FlickrByLocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464E917566ABE008D2C98 /* FlickrByLocViewController.m */; };
 		A4F464F217566ABE008D2C98 /* FlickrByTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F464EB17566ABE008D2C98 /* FlickrByTagCell.m */; };
@@ -81,7 +81,6 @@
 		5BD517B51755B82D00703400 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5BD517C41755B87D00703400 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4413812555_7a16d2c02b_z.jpg; sourceTree = "<group>"; };
-		A4673DC617595DF800FD0E6C /* rabbit-hole-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rabbit-hole-home.png"; sourceTree = "<group>"; };
 		A4673DC81759616800FD0E6C /* connect-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-white.png"; sourceTree = "<group>"; };
 		A4673DCA175962F000FD0E6C /* LandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingViewController.h; sourceTree = "<group>"; };
 		A4673DCB175962F000FD0E6C /* LandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingViewController.m; sourceTree = "<group>"; };
@@ -90,6 +89,7 @@
 		A4673DD6175A7B5300FD0E6C /* rabbit-hole-landingTail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rabbit-hole-landingTail.png"; sourceTree = "<group>"; };
 		A4673DD9175A7E2400FD0E6C /* BunnyTail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BunnyTail.h; sourceTree = "<group>"; };
 		A4673DDA175A7E2400FD0E6C /* BunnyTail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BunnyTail.m; sourceTree = "<group>"; };
+		A4673E05175D27DA00FD0E6C /* rabbit-hole-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rabbit-hole-home.png"; sourceTree = "<group>"; };
 		A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrByLocCell.h; sourceTree = "<group>"; };
 		A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrByLocCell.m; sourceTree = "<group>"; };
 		A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrByLocViewController.h; sourceTree = "<group>"; };
@@ -221,13 +221,10 @@
 				A4F464ED17566ABE008D2C98 /* FlickrByTagViewController.m */,
 				296114C617581F360081AE55 /* FlickrTappedViewController.h */,
 				296114C717581F360081AE55 /* FlickrTappedViewController.m */,
-				2905D8AB1758D4B7009E27E1 /* TappedPhotoPopUp.h */,
-				2905D8AC1758D4B7009E27E1 /* TappedPhotoPopUp.m */,
 				29132CF917585EF70087B63A /* Annotation Classes */,
 				A4F464EE17566ABE008D2C98 /* SourceURLTags.h */,
 				A4F464EF17566ABE008D2C98 /* SourceURLTags.m */,
 				A4673DDD175ADCB700FD0E6C /* _unused Flickr by Location ViewCont. & Cell */,
-
 				29132CFD175865990087B63A /* UI Elements */,
 				5BD517A01755B82D00703400 /* Supporting Files */,
 			);
@@ -237,13 +234,13 @@
 		5BD517A01755B82D00703400 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A4673E05175D27DA00FD0E6C /* rabbit-hole-home.png */,
 				2943AACA175C03E4003E7C20 /* upArrow.png */,
 				29368EE0175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png */,
 				A4673DD5175A7B5300FD0E6C /* rabbit-hole-landing.png */,
 				A4673DD6175A7B5300FD0E6C /* rabbit-hole-landingTail.png */,
 				A4673DCF175A745B00FD0E6C /* grassyTableCell.png */,
 				A4673DC81759616800FD0E6C /* connect-white.png */,
-				A4673DC617595DF800FD0E6C /* rabbit-hole-home.png */,
 				5BD517C61755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg */,
 				5BD517A11755B82D00703400 /* DonsDiscoveryApp-Info.plist */,
 				5BD517A21755B82D00703400 /* InfoPlist.strings */,
@@ -325,13 +322,13 @@
 				5BD517B31755B82D00703400 /* MainStoryboard.storyboard in Resources */,
 				5BD517C71755BFE500703400 /* 4413812555_7a16d2c02b_z.jpg in Resources */,
 				29A2E5DC1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png in Resources */,
-				A4673DC717595DF800FD0E6C /* rabbit-hole-home.png in Resources */,
 				A4673DC91759616800FD0E6C /* connect-white.png in Resources */,
 				A4673DD0175A745B00FD0E6C /* grassyTableCell.png in Resources */,
 				A4673DD7175A7B5300FD0E6C /* rabbit-hole-landing.png in Resources */,
 				A4673DD8175A7B5300FD0E6C /* rabbit-hole-landingTail.png in Resources */,
 				2943AACB175C03E5003E7C20 /* upArrow.png in Resources */,
 				29368EE1175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png in Resources */,
+				A4673E06175D27DA00FD0E6C /* rabbit-hole-home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

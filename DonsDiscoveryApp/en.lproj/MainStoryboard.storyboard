@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -9,11 +9,11 @@
             <objects>
                 <viewController id="jUT-1W-wfV" customClass="LandingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qIb-VY-xhK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lal-PB-qKG">
-                                <rect key="frame" x="0.0" y="249" width="320" height="167"/>
+                                <rect key="frame" x="0.0" y="285" width="320" height="222"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -22,14 +22,14 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="bottomLeft" image="rabbit-hole-landing.png" id="whG-Ln-sLR">
-                                <rect key="frame" x="0.0" y="95" width="320" height="153"/>
+                                <rect key="frame" x="0.0" y="132" width="320" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="top" image="rabbit-hole-landingTail.png" id="IRa-yS-tFh" customClass="BunnyTail">
-                                <rect key="frame" x="125" y="170" width="71" height="61"/>
+                                <rect key="frame" x="125" y="208" width="71" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -103,7 +103,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Trh-xB-QU8" customClass="FlickrByTagViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="08f-4u-zRr">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="95C-ef-zfj">
@@ -180,11 +180,11 @@
             <objects>
                 <viewController id="GE4-Ee-AWe" customClass="FlickrTappedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlu-Pm-Kc0">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="hol-ha-DEW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="497"/>
+                                <rect key="frame" x="0.0" y="7" width="320" height="497"/>
                                 <connections>
                                     <outlet property="delegate" destination="GE4-Ee-AWe" id="JmT-K9-gFO"/>
                                 </connections>
@@ -275,15 +275,15 @@
             <objects>
                 <viewController id="1LV-LS-Dol" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="alM-9F-04g">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rabbit-hole-home.png" id="ayd-37-gnj">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="rabbit-hole-home.png" id="ayd-37-gnj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zhb-sZ-MFq">
-                                <rect key="frame" x="79" y="97" width="162" height="44"/>
+                                <rect key="frame" x="79" y="169" width="162" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="connect-white.png">
@@ -302,6 +302,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="BTv-rG-yqx"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zO-C3-QrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -328,85 +329,6 @@
         <image name="rabbit-hole-landing.png" width="320" height="155"/>
         <image name="rabbit-hole-landingTail.png" width="56" height="56"/>
     </resources>
-    <classes>
-        <class className="BunnyTail" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BunnyTail.h"/>
-        </class>
-        <class className="FSVenueDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSVenueDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="venueNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="wikiBottomBarImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="FlickrByLocCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrByLocCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="locImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="FlickrByLocViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrByLocViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="flickrByLocationCollectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="locViewActivityIndicator" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="FlickrByTagCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrByTagCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tagImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tagLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FlickrByTagViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrByTagViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="suggestionView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="suggestionViewLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="taggedItemsCollectionView" candidateClass="UICollectionView"/>
-            </relationships>
-        </class>
-        <class className="FlickrTappedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrTappedViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="latTextLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="popUpLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="LandingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LandingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="bunnyTail" candidateClass="BunnyTail"/>
-                <relationship kind="outlet" name="landingOptionsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="loginWebView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="connectToFSwithButton:"/>
-            </relationships>
-        </class>
-        <class className="WikiDragUpView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WikiDragUpView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
