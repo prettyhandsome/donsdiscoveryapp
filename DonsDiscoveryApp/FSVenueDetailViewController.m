@@ -126,7 +126,7 @@
                                         panRecognizer.view.center.y + translation.y);
         
         // Set up height limit
-        if (newCenter.y >= maxY +160 && newCenter.y <= 300) {
+        if (newCenter.y >= maxY + 90 && newCenter.y <= 300) {
             panRecognizer.view.center = newCenter;
             [panRecognizer setTranslation:CGPointZero inView:self.view];
         }

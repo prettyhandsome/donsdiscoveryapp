@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -9,11 +9,11 @@
             <objects>
                 <viewController id="jUT-1W-wfV" customClass="LandingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qIb-VY-xhK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lal-PB-qKG">
-                                <rect key="frame" x="0.0" y="249" width="320" height="255"/>
+                                <rect key="frame" x="0.0" y="249" width="320" height="167"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -51,7 +51,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="lUS-CF-6g4" customClass="FlickrByLocViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="i8B-P8-CiP">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kT5-FA-mO9">
@@ -61,7 +61,7 @@
                             <inset key="sectionInset" minX="25" minY="10" maxX="25" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" style="whiteLarge" id="1ST-W3-QMv">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <cells>
@@ -103,7 +103,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Trh-xB-QU8" customClass="FlickrByTagViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="08f-4u-zRr">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="95C-ef-zfj">
@@ -180,11 +180,11 @@
             <objects>
                 <viewController id="GE4-Ee-AWe" customClass="FlickrTappedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rlu-Pm-Kc0">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="hol-ha-DEW">
-                                <rect key="frame" x="0.0" y="7" width="320" height="497"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="497"/>
                                 <connections>
                                     <outlet property="delegate" destination="GE4-Ee-AWe" id="JmT-K9-gFO"/>
                                 </connections>
@@ -207,7 +207,7 @@
             <objects>
                 <viewController id="YuN-cm-CCd" customClass="FSVenueDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OFG-Z5-RPw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Venue Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uZJ-mQ-LKI">
@@ -218,11 +218,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view autoresizesSubviews="NO" contentMode="scaleAspectFit" id="PYK-1U-KZJ" customClass="WikiDragUpView">
-                                <rect key="frame" x="0.0" y="231" width="320" height="273"/>
+                                <rect key="frame" x="0.0" y="231" width="320" height="185"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" image="Dig_Deeper_BottomBar_v2.png" id="Wsf-oP-QAr">
-                                        <rect key="frame" x="-5" y="189" width="331" height="205"/>
+                                        <rect key="frame" x="-11" y="99" width="331" height="205"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
@@ -236,7 +236,7 @@
                         <color key="backgroundColor" red="0.80392163989999998" green="0.96862751250000001" blue="0.96862751250000001" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="wsK-qH-gmT"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="venueNameLabel" destination="uZJ-mQ-LKI" id="nxa-cU-w1y"/>
                         <outlet property="wikiBottomBarImage" destination="Wsf-oP-QAr" id="Pda-EN-9qr"/>
@@ -250,7 +250,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1884" y="-648"/>
+            <point key="canvasLocation" x="1878" y="-674"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pcR-SH-DU7">
@@ -275,11 +275,11 @@
             <objects>
                 <viewController id="1LV-LS-Dol" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="alM-9F-04g">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="rabbit-hole-home.png" id="ayd-37-gnj">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="rabbit-hole-home.png" id="ayd-37-gnj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zhb-sZ-MFq">
@@ -312,7 +312,7 @@
             <objects>
                 <viewController id="6lw-Yi-3EE" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pfm-v6-wOI">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -410,6 +410,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>
