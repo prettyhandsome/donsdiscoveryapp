@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BunnyTail.h"
 
 @interface LandingViewController : UIViewController<UIWebViewDelegate>
 
@@ -16,5 +17,6 @@
 
 //tableview
 @property (strong, nonatomic) IBOutlet UITableView *landingOptionsTableView;
+@property (nonatomic) IBOutlet BunnyTail *bunnyTail;
 
 @end

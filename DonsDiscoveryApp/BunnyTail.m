@@ -28,10 +28,22 @@
 }
 */
 
+//you can access Core Animation through the methods and properties of the UIView class
 
 -(void)rabbitTailBounce{
     
-//add if time.
+    CGPoint leftPos = CGPointMake(160, 200);
+    CGPoint rightPos = CGPointMake(leftPos.x+2, leftPos.y);
+    
+    [UIView animateWithDuration: 1.0f
+                     animations:^{
+                         
+                         self.center = CGPointMake(self.center.x+2, self.center.y+0);
+                    } completion:^(BOOL finished) {
+                         //later
+                        
+                     }];
+
 }
 
 @end

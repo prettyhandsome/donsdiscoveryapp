@@ -11,13 +11,13 @@
 #import "FlickrByTagViewController.h"
 #import "FlickrByTagCell.h"
 #import "FlickrTappedViewController.h"
-#import "BunnyTail.h"
+
 
 
 @interface LandingViewController ()
 
 @property (strong, nonatomic) NSArray *landingOptions;
-@property (strong, nonatomic) NSString *searchStringOption; 
+@property (strong, nonatomic) NSString *searchStringOption;
 
 @end
 
@@ -48,6 +48,9 @@ NSString *kRedirectURI = @"app://testapp123";
     NSLog(@"viewDidLoad");
     [self.loginWebView loadRequest:request];
     [self.view addSubview:self.loginWebView];
+    
+    [self.bunnyTail rabbitTailBounce];
+
     
 // related to table view for generating tag search collection, and segue to gallery view
     self.landingOptions = [NSArray arrayWithObjects: @"food", @"drink", @"art & architecture", @"events", @"feeling lucky", nil];
@@ -144,8 +147,17 @@ NSString *kRedirectURI = @"app://testapp123";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
+    NSArray *luckySearchStrings = [NSArray arrayWithObjects: @"awesome", @"cool", @"amazing", @"beautiful", @"fun", @"great", @"delicious" nil];
     
+    int luckyIndexPath = arc4random()%(luckySearchStrings.count-1);
+    NSString *luckySearch = luckySearchStrings[luckyIndexPath];
+    
+    if ([self.searchStringOption isEqualToString:@"feeling lucky"]) {
+        ((FlickrByTagViewController*)(segue.destinationViewController)).tagText = luckySearch;
+    } else {
         ((FlickrByTagViewController*)(segue.destinationViewController)).tagText = self.searchStringOption;
+    }
+    
 
         NSLog(@"%@",((FlickrByTagViewController*)(segue.destinationViewController)).tagText );
    
