@@ -110,7 +110,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     NSLog(@"replace string=%@", replaceString);
     
     //searches on tag, lat, long.
-    NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&api_key=%@&format=json&nojsoncallback=1&tags=%@&lat=%@&lon=%@", kApiKeyAgain, replaceString, currentLatitude, currentLongitude];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&api_key=%@&format=json&nojsoncallback=1&tags=%@&lat=%@&long=%@",kApiKeyAgain, replaceString, currentLatitude, currentLongitude];
     NSLog(@"url string: %@",urlString);
 
     
@@ -160,8 +160,9 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                     NSLog(@"array count = %d", self.taggedImagesArray.count);
                                }
                                [self.taggedItemsCollectionView reloadData];
-                               [self.activityIndicator stopAnimating];
+                              // [self.activityIndicator stopAnimating];
                            }];
+      [self.activityIndicator stopAnimating];
 }
 
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock

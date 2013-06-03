@@ -12,6 +12,7 @@
 #import "FlickrByTagCell.h"
 #import "FlickrTappedViewController.h"
 #import "BunnyTail.h"
+#import "FSVenueDetailViewController.h"
 
 
 @interface LandingViewController ()

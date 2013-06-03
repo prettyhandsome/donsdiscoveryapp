@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2905D8AD1758D4B7009E27E1 /* TappedPhotoPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2905D8AC1758D4B7009E27E1 /* TappedPhotoPopUp.m */; };
 		29132CF017584B590087B63A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29132CEF17584B590087B63A /* MapKit.framework */; };
 		29132CF217584B5E0087B63A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29132CF117584B5E0087B63A /* CoreLocation.framework */; };
 		29132CF5175859980087B63A /* FourSquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CF4175859980087B63A /* FourSquareVenue.m */; };
 		29132CF817585EE20087B63A /* TappedPhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CF717585EE10087B63A /* TappedPhotoAnnotation.m */; };
 		29132CFC175862BD0087B63A /* TappedPhotoAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */; };
+		29368EE1175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 29368EE0175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png */; };
+		2943AAC1175BC009003E7C20 /* FSVenueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2943AAC0175BC009003E7C20 /* FSVenueDetailViewController.m */; };
+		2943AAC6175BC087003E7C20 /* WikiDragUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2943AAC5175BC087003E7C20 /* WikiDragUpView.m */; };
+		2943AACB175C03E5003E7C20 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2943AACA175C03E4003E7C20 /* upArrow.png */; };
 		296114C817581F360081AE55 /* FlickrTappedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296114C717581F360081AE55 /* FlickrTappedViewController.m */; };
 		29A2E5DC1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */; };
 		5BD5179A1755B82D00703400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD517991755B82D00703400 /* UIKit.framework */; };
@@ -43,8 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2905D8AB1758D4B7009E27E1 /* TappedPhotoPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TappedPhotoPopUp.h; sourceTree = "<group>"; };
-		2905D8AC1758D4B7009E27E1 /* TappedPhotoPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoPopUp.m; sourceTree = "<group>"; };
 		29132CEF17584B590087B63A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		29132CF117584B5E0087B63A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		29132CF3175859980087B63A /* FourSquareVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourSquareVenue.h; sourceTree = "<group>"; };
@@ -53,6 +54,12 @@
 		29132CF717585EE10087B63A /* TappedPhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoAnnotation.m; sourceTree = "<group>"; };
 		29132CFA175862BC0087B63A /* TappedPhotoAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TappedPhotoAnnotationView.h; sourceTree = "<group>"; };
 		29132CFB175862BC0087B63A /* TappedPhotoAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TappedPhotoAnnotationView.m; sourceTree = "<group>"; };
+		29368EE0175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dig_Deeper_BottomBar_v2.png; sourceTree = "<group>"; };
+		2943AABF175BC009003E7C20 /* FSVenueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenueDetailViewController.h; sourceTree = "<group>"; };
+		2943AAC0175BC009003E7C20 /* FSVenueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenueDetailViewController.m; sourceTree = "<group>"; };
+		2943AAC4175BC087003E7C20 /* WikiDragUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiDragUpView.h; sourceTree = "<group>"; };
+		2943AAC5175BC087003E7C20 /* WikiDragUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiDragUpView.m; sourceTree = "<group>"; };
+		2943AACA175C03E4003E7C20 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
 		296114C617581F360081AE55 /* FlickrTappedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrTappedViewController.h; sourceTree = "<group>"; };
 		296114C717581F360081AE55 /* FlickrTappedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrTappedViewController.m; sourceTree = "<group>"; };
 		29A2E5DB1758FFFA00E080A6 /* OrangeMapPin_WithPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeMapPin_WithPhoto.png; sourceTree = "<group>"; };
@@ -133,6 +140,36 @@
 			name = "UI Elements";
 			sourceTree = "<group>";
 		};
+		2943AAC2175BC00E003E7C20 /* FlickrViews */ = {
+			isa = PBXGroup;
+			children = (
+				A4F464EE17566ABE008D2C98 /* SourceURLTags.h */,
+				A4F464EF17566ABE008D2C98 /* SourceURLTags.m */,
+				A4F464ED17566ABE008D2C98 /* FlickrByTagViewController.m */,
+				A4F464EC17566ABE008D2C98 /* FlickrByTagViewController.h */,
+				296114C617581F360081AE55 /* FlickrTappedViewController.h */,
+				296114C717581F360081AE55 /* FlickrTappedViewController.m */,
+				A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */,
+				A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */,
+				A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */,
+				A4F464E917566ABE008D2C98 /* FlickrByLocViewController.m */,
+				A4F464EA17566ABE008D2C98 /* FlickrByTagCell.h */,
+				A4F464EB17566ABE008D2C98 /* FlickrByTagCell.m */,
+			);
+			name = FlickrViews;
+			sourceTree = "<group>";
+		};
+		2943AAC3175BC028003E7C20 /* VenueDetailViews  */ = {
+			isa = PBXGroup;
+			children = (
+				2943AAC0175BC009003E7C20 /* FSVenueDetailViewController.m */,
+				2943AABF175BC009003E7C20 /* FSVenueDetailViewController.h */,
+				2943AAC4175BC087003E7C20 /* WikiDragUpView.h */,
+				2943AAC5175BC087003E7C20 /* WikiDragUpView.m */,
+			);
+			name = "VenueDetailViews ";
+			sourceTree = "<group>";
+		};
 		5BD5178D1755B82D00703400 = {
 			isa = PBXGroup;
 			children = (
@@ -175,21 +212,9 @@
 				A4673DCB175962F000FD0E6C /* LandingViewController.m */,
 				A4673DD9175A7E2400FD0E6C /* BunnyTail.h */,
 				A4673DDA175A7E2400FD0E6C /* BunnyTail.m */,
-				A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */,
-				A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */,
-				A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */,
-				A4F464E917566ABE008D2C98 /* FlickrByLocViewController.m */,
-				A4F464EA17566ABE008D2C98 /* FlickrByTagCell.h */,
-				A4F464EB17566ABE008D2C98 /* FlickrByTagCell.m */,
-				A4F464EC17566ABE008D2C98 /* FlickrByTagViewController.h */,
-				A4F464ED17566ABE008D2C98 /* FlickrByTagViewController.m */,
-				296114C617581F360081AE55 /* FlickrTappedViewController.h */,
-				296114C717581F360081AE55 /* FlickrTappedViewController.m */,
-				2905D8AB1758D4B7009E27E1 /* TappedPhotoPopUp.h */,
-				2905D8AC1758D4B7009E27E1 /* TappedPhotoPopUp.m */,
+				2943AAC2175BC00E003E7C20 /* FlickrViews */,
+				2943AAC3175BC028003E7C20 /* VenueDetailViews  */,
 				29132CF917585EF70087B63A /* Annotation Classes */,
-				A4F464EE17566ABE008D2C98 /* SourceURLTags.h */,
-				A4F464EF17566ABE008D2C98 /* SourceURLTags.m */,
 				29132CFD175865990087B63A /* UI Elements */,
 				5BD517A01755B82D00703400 /* Supporting Files */,
 			);
@@ -199,6 +224,8 @@
 		5BD517A01755B82D00703400 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2943AACA175C03E4003E7C20 /* upArrow.png */,
+				29368EE0175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png */,
 				A4673DD5175A7B5300FD0E6C /* rabbit-hole-landing.png */,
 				A4673DD6175A7B5300FD0E6C /* rabbit-hole-landingTail.png */,
 				A4673DCF175A745B00FD0E6C /* grassyTableCell.png */,
@@ -279,6 +306,8 @@
 				A4673DD0175A745B00FD0E6C /* grassyTableCell.png in Resources */,
 				A4673DD7175A7B5300FD0E6C /* rabbit-hole-landing.png in Resources */,
 				A4673DD8175A7B5300FD0E6C /* rabbit-hole-landingTail.png in Resources */,
+				2943AACB175C03E5003E7C20 /* upArrow.png in Resources */,
+				29368EE1175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,9 +330,10 @@
 				29132CF5175859980087B63A /* FourSquareVenue.m in Sources */,
 				29132CF817585EE20087B63A /* TappedPhotoAnnotation.m in Sources */,
 				29132CFC175862BD0087B63A /* TappedPhotoAnnotationView.m in Sources */,
-				2905D8AD1758D4B7009E27E1 /* TappedPhotoPopUp.m in Sources */,
 				A4673DCC175962F000FD0E6C /* LandingViewController.m in Sources */,
 				A4673DDB175A7E2400FD0E6C /* BunnyTail.m in Sources */,
+				2943AAC1175BC009003E7C20 /* FSVenueDetailViewController.m in Sources */,
+				2943AAC6175BC087003E7C20 /* WikiDragUpView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

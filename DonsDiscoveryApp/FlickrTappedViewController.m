@@ -12,7 +12,8 @@
 #import "FourSquareVenue.h"
 #import "TappedPhotoAnnotation.h"
 #import "TappedPhotoAnnotationView.h"
-#import "TappedPhotoPopUp.h"
+#import "FSVenueDetailViewController.h"
+
 
 @interface FlickrTappedViewController ()
 {
@@ -23,6 +24,9 @@
     NSString *tappedPhotoTag;
     NSString *tappedPhotoCity;
     NSString *tappedPhoteState;
+    NSString *venueID;
+    FourSquareVenue *selectedVenue;
+    
    
 }
 
@@ -61,9 +65,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 {
     [super viewDidLoad];
     
-    TappedPhotoPopUp *photoPopUp = [[TappedPhotoPopUp alloc]init]; 
-    [self.view addSubview:photoPopUp];
-    
+       
     
       NSLog(@"the tapped photo ID is %@",_photoTappedID); 
 	// Do any additional setup after loading the view.
@@ -106,7 +108,8 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                               NSLog(@"city is %@, state is %@",tappedPhotoCity,tappedPhoteState);
                               //popUpLabel.text = (@"Your photo is in %@,%@",photoCity,photoState);
                                
-                
+                             [self dropPinForFlickPhoto];
+                               
                                NSLog(@"the latitude is %@",tappedPhotolatitude);
                                NSLog(@"the longitude is%@",tappedPhotolongitude);
                                
@@ -114,8 +117,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                
                                tappedPhotoTitle = [photoContentDescriptions objectForKey:@"_content"];
                                
-                                 [self dropPinForFlickPhoto];
-                               
+                                                               
                             //Create array for tag data and get an array of tags. The tag section in the JSON returns an array of dictionaries
                             
                             NSArray *tagResultsArray= [[[resultsDict objectForKey:@"photo"] objectForKey:@"tags"] objectForKey:@"tag"];
@@ -126,41 +128,20 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                for (NSDictionary *dictionary in tagResultsArray) {
                                    
                                    tappedPhotoTag = [dictionary objectForKey:@"raw"];
-                                   NSLog(@"tapped photo tags are %@",tappedPhotoTag);
-                                   
-
                                    [rawTagArray addObject:tappedPhotoTag];
-                                   NSLog(@"tapped photo tag ARRAY has %@",rawTagArray);
-                                   NSLog (@"there are %i items in the array",rawTagArray.count);
+                                  // NSLog(@"tapped photo tag ARRAY has %@",rawTagArray);
+                                 //  NSLog (@"there are %i items in the array",rawTagArray.count);
 
                                    rawTagArray = [[NSMutableArray alloc] init];
-                                   
-                                   //rawTagArray= [dictionary objectForKey:@"raw"];
-                                  
-                                   //This ALWAYS CRASHES THE APP! 
-                                  // NSString *testTag1 = [rawTagArray objectAtIndex:0];
                                    [rawTagArray addObject:tappedPhotoTag];
-                                   NSLog(@"tapped photo tags are %@",rawTagArray);
-
-                                   
-//                                   CLLocationCoordinate2D center = CLLocationCoordinate2DMake([latitude floatValue],[longitude floatValue]);
-//                                   
-//                                   MKCoordinateSpan span = MKCoordinateSpanMake(0.1, 0.1);
-//                                   MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
-//                                   
-//                                   self.mapView.region = region;
+                                  // NSLog(@"tapped photo tags are %@",rawTagArray);
+                                
                                   
                                }
-           
-                               
-                             [self getFourSquareMapURLData];
-                               
+                                [self getFourSquareMapURLData];
+                                                          
                 }];
-    
    
-    
-   // [self dropPinForFlickPhoto];
-    
 
     }
 
@@ -172,9 +153,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     tappedPhotoAnnotation.coordinate = CLLocationCoordinate2DMake([tappedPhotolatitude floatValue], [tappedPhotolongitude floatValue]);
     tappedPhotoAnnotation.title = tappedPhotoTitle;
-        
-   // [self.mapView addAnnotation:tappedPhotoAnnotation];
-    
+         
     CLLocationCoordinate2D center = tappedPhotoAnnotation.coordinate;
     
     MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
@@ -273,13 +252,12 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     NSString *foursquareClientID=@"MFDIXCKNSUTA01UKTJUUCPDLOU2QX3GA4NAFF4YFHGF1KDXH";
     NSString *foursquareClientSecret =@"S5MZYU1VDCK5FT21TYMKUBUYAS4PED30350KQKVBXYJW5IPJ";
-    NSString *tagQuery1= [rawTagArray objectAtIndex:0];
-    NSString *tagQuery2 = [rawTagArray objectAtIndex:1];
-    NSLog(@"the first tag is %@",tagQuery1);
-    NSLog(@"the second tag is %@",tagQuery2);
-
+    //NSString *tagQuery1= [rawTagArray objectAtIndex:0];
+    //NSString *tagQuery2 = [rawTagArray objectAtIndex:1];
+ 
+//https:api.foursquare.com/v2/tips/search?ll=41.90,-87.65&radius=2000&query=pizza&client_id=MFDIXCKNSUTA01UKTJUUCPDLOU2QX3GA4NAFF4YFHGF1KDXH&client_secret=S5MZYU1VDCK5FT21TYMKUBUYAS4PED30350KQKVBXYJW5IPJ&v=20130530
     
-    NSString *venuesCloseToPhotoLocationURLString= [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%@,%@&radius=50000&query=%@&%@&client_id=%@&client_secret=%@&v=20130530",tappedPhotolatitude,tappedPhotolongitude,tagQuery1,tagQuery2 ,foursquareClientID,foursquareClientSecret];
+    NSString *venuesCloseToPhotoLocationURLString= [NSString stringWithFormat:@"https://api.foursquare.com/v2/tips/search?ll=%@,%@&radius=20000&client_id=%@&client_secret=%@&v=20130602",tappedPhotolatitude,tappedPhotolongitude,foursquareClientID,foursquareClientSecret];
 
     
     venuesCloseToPhotoLocationURLString = [venuesCloseToPhotoLocationURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -294,15 +272,16 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                NSDictionary *resultsfromVenueSearch = [NSJSONSerialization JSONObjectWithData:data
                                                                                                options:0 error:nil];
                         
-                               NSArray *venueArray = [[resultsfromVenueSearch objectForKey:@"response"]objectForKey:@"venues"];
+                               NSArray *venueArray = [[resultsfromVenueSearch objectForKey:@"response"]objectForKey:@"tips"];
                                
                                for (NSDictionary *dictionary in venueArray) {
-                                   
-                                   venueLat = [[dictionary objectForKey:@"location"] objectForKey:@"lat"];
-                                   venueLng= [[dictionary objectForKey:@"location"] objectForKey:@"lng"];
-                                   venueName = [dictionary objectForKey:@"name"];
-                                   
-                                 //  NSLog(@"the venue names are %@",venueName);
+                                       
+                                       venueLat = [[[dictionary objectForKey:@"venue"] objectForKey:@"location"] objectForKey:@"lat"];
+                                       venueLng= [[[dictionary objectForKey:@"venue"] objectForKey:@"location"]objectForKey:@"lng"];
+                                       venueName = [[dictionary objectForKey:@"venue"] objectForKey:@"name"];
+                                       venueID = [[dictionary objectForKey:@"venue"] objectForKey:@"id"];
+                                       NSArray *tipArray = [dictionary objectForKey:@"text"];
+                            
                                    
                             [self setUpVenueMapAnnotationData];
                                }
@@ -315,14 +294,29 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 }
 -(void) setUpVenueMapAnnotationData {
     
-    FourSquareVenue  *nearByVenues = [[FourSquareVenue  alloc] init];
+   FourSquareVenue  *nearByVenues = [[FourSquareVenue  alloc] init];
     
     nearByVenues.coordinate = CLLocationCoordinate2DMake([venueLat  floatValue], [venueLng floatValue]);
     nearByVenues.title = venueName;
-    NSLog(@" venue lat is %@",venueLat);
         
     [self.mapView addAnnotation:nearByVenues];
     
+}
+
+-(void) mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    selectedVenue= [mapView.selectedAnnotations objectAtIndex:0];
+    
+    [self performSegueWithIdentifier:@"venueDetailsView" sender:self];
+     NSLog(@"the selected venue name is %@", selectedVenue.title); 
+    NSLog(@" BUTTON WORKED!"); 
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    ((FSVenueDetailViewController *)segue.destinationViewController).selectedVenue= selectedVenue; 
+   
 }
 
 
