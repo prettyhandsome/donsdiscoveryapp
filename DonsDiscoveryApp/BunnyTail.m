@@ -33,15 +33,32 @@
 -(void)rabbitTailBounce{
     
     CGPoint leftPos = CGPointMake(160, 200);
-    CGPoint rightPos = CGPointMake(leftPos.x+2, leftPos.y);
+    self.center = leftPos;
+
     
-    [UIView animateWithDuration: 1.0f
+    CGPoint rightPos = CGPointMake(leftPos.x+3, leftPos.y+0.5);
+    
+    [UIView animateWithDuration:0.2
+                          delay:1.0
+                        options: (((UIViewAnimationOptions)(UIViewAnimationCurveEaseOut)) /*| UIViewAnimationOptionRepeat <--- this makes an infinitely wiggly tail*/)
                      animations:^{
-                         
-                         self.center = CGPointMake(self.center.x+2, self.center.y+0);
-                    } completion:^(BOOL finished) {
-                         //later
-                        
+                         [UIView setAnimationRepeatCount:2]; 
+                         self.center = rightPos;
+                     }
+                     completion:^(BOOL finished){
+                         [UIView animateWithDuration:0.2
+                                               delay:0.1
+                                             options: ((UIViewAnimationOptions)(UIViewAnimationCurveEaseOut))
+                                          animations:^{
+                                              self.center = leftPos;
+                                          }
+                                          completion:^(BOOL finished){
+                                                  
+                                              CGAffineTransform rotateTransform = CGAffineTransformRotate(CGAffineTransformMakeRotation(0), 5);
+                                              
+                                              self.transform = rotateTransform;
+                                              NSLog(@"Done!");
+                                          }];
                      }];
 
 }

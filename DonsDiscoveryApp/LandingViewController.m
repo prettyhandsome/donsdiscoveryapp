@@ -147,7 +147,7 @@ NSString *kRedirectURI = @"app://testapp123";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
-    NSArray *luckySearchStrings = [NSArray arrayWithObjects: @"awesome", @"cool", @"amazing", @"beautiful", @"fun", @"great", @"delicious" nil];
+    NSArray *luckySearchStrings = [NSArray arrayWithObjects: @"awesome", @"cool", @"amazing", @"beautiful", @"fun", @"great", @"delicious", nil];
     
     int luckyIndexPath = arc4random()%(luckySearchStrings.count-1);
     NSString *luckySearch = luckySearchStrings[luckyIndexPath];
