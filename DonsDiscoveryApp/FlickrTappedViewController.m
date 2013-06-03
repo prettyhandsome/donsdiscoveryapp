@@ -298,6 +298,8 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     nearByVenues.coordinate = CLLocationCoordinate2DMake([venueLat  floatValue], [venueLng floatValue]);
     nearByVenues.title = venueName;
+    nearByVenues.venueLat =venueLat;
+    nearByVenues.venueLong = venueLng;
         
     [self.mapView addAnnotation:nearByVenues];
     

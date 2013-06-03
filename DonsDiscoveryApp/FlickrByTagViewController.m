@@ -13,6 +13,9 @@
 
 @interface FlickrByTagViewController ()
 {
+    //suggestion items:
+    NSTimer *suggestionTimer;
+    
 //location items:
 
     NSString *currentLatitude;
@@ -49,7 +52,9 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
     //download the current coord.
     [self startStandardUpdates];
+    [self chooseSuggestion];
     
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,7 +64,34 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 }
 
 #pragma 
-#pragma - setLocation
+#pragma mark Provide Instructions
+
+-(void)chooseSuggestion{
+    
+    [super.view addSubview: self.suggestionView];
+    
+    if ([self.tagText isEqualToString: @"food"]) {
+        self.suggestionViewLabel.text = @"take a look...\n tap what looks tasty!";
+    } else if
+        ([self.tagText isEqualToString: @"drink"]) {
+        self.suggestionViewLabel.text = @"thirsty?\n tap what looks tempting!";
+    } else if
+        ([self.tagText isEqualToString: @"art & architecture"]) {
+            self.suggestionViewLabel.text = @"tap what looks lovely!";
+        
+        } else if
+            ([self.tagText isEqualToString: @"events"]) {
+                self.suggestionViewLabel.text = @"tap what looks fun!";
+        
+            } else{
+                self.suggestionViewLabel.text = @"tap what looks interesting!";
+            }
+
+}
+
+
+#pragma 
+#pragma mark Set Location
 
 - (void)startStandardUpdates
 {
@@ -101,7 +133,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
 
 #pragma 
-#pragma - Get JSON from Flickr
+#pragma mark Get JSON from Flickr
 
 -(void)getFlickrJSONData{
     
@@ -160,7 +192,14 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                     NSLog(@"array count = %d", self.taggedImagesArray.count);
                                }
                                [self.taggedItemsCollectionView reloadData];
+
                               // [self.activityIndicator stopAnimating];
+                               
+                               //i'd rather use a timer, but this will remove the label once pictures appear, it looks a little glitchy
+                               if (self.taggedImagesArray.count !=0) {
+                                   [self.suggestionView removeFromSuperview];
+                               }
+
                            }];
       [self.activityIndicator stopAnimating];
 }
@@ -185,7 +224,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
 
 #pragma
-#pragma - Set Table View
+#pragma mark Set Table View
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
@@ -198,6 +237,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     NSLog(@"this logs the items in section:%d", self.taggedImagesArray.count);
     return self.taggedImagesArray.count;
+    
 }
 
 
@@ -231,6 +271,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     }];
     
     return flickrByTagCell;
+    [self.activityIndicator stopAnimating];
 }
 
 
@@ -249,7 +290,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
         if ([[segue identifier] isEqualToString:@"pushToDetails"]){
         
             
-            NSIndexPath *selectedIndexPath = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+            NSIndexPath *selectedIndexPath = [[self.taggedItemsCollectionView indexPathsForSelectedItems] objectAtIndex:0];
             NSString *photoIdToPush = [photoByTagArray valueForKey:@"id"][selectedIndexPath.row];
             ((FlickrTappedViewController*)(segue.destinationViewController)).photoTappedID = photoIdToPush;
         

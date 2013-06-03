@@ -28,10 +28,39 @@
 }
 */
 
+//you can access Core Animation through the methods and properties of the UIView class
 
 -(void)rabbitTailBounce{
     
-//add if time.
+    CGPoint leftPos = CGPointMake(160, 200);
+    self.center = leftPos;
+
+    
+    CGPoint rightPos = CGPointMake(leftPos.x+3, leftPos.y+0.5);
+    
+    [UIView animateWithDuration:0.2
+                          delay:1.0
+                        options: (((UIViewAnimationOptions)(UIViewAnimationCurveEaseOut)) /*| UIViewAnimationOptionRepeat <--- this makes an infinitely wiggly tail*/)
+                     animations:^{
+                         [UIView setAnimationRepeatCount:2]; 
+                         self.center = rightPos;
+                     }
+                     completion:^(BOOL finished){
+                         [UIView animateWithDuration:0.2
+                                               delay:0.1
+                                             options: ((UIViewAnimationOptions)(UIViewAnimationCurveEaseOut))
+                                          animations:^{
+                                              self.center = leftPos;
+                                          }
+                                          completion:^(BOOL finished){
+                                                  
+                                              CGAffineTransform rotateTransform = CGAffineTransformRotate(CGAffineTransformMakeRotation(0), 5);
+                                              
+                                              self.transform = rotateTransform;
+                                              NSLog(@"Done!");
+                                          }];
+                     }];
+
 }
 
 @end

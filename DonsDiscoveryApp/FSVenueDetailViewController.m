@@ -14,11 +14,17 @@
     
     NSString *venueID;
     NSString *venueName;
+    NSString *venueLat;
+    NSString  *venueLong;
+    
+    
     CGPoint _originalCenter;
     WikiDragUpView *wikiView;
     CGPoint originalPoint; 
 
 }
+
+-(void)makeWikiURLRequest; 
 
 
 @end
@@ -42,8 +48,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self makeWikiURLRequest];
+    //Set up properties for selected venue
+    venueLat = _selectedVenue.venueLat;
+    venueLong = _selectedVenue.venueLong;
+    NSLog(@"detail venue lat is %@ and lng is %@",venueLat,venueLong);
     venueName= _selectedVenue.title;
     _venueNameLabel.text =venueName;
+    
     
     //set Up Pan Gesture Recognizer
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDetected:)];
@@ -53,7 +66,7 @@
     
     [self.wikiBottomBarImage addGestureRecognizer:panRecognizer];
     
-   
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +75,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark JSON Wiki URL Request
+-(void)makeWikiURLRequest {
+    
+      
+    
+    NSString *wikiURLString = [NSString stringWithFormat:@"http://api.wikilocation.org/articles?lat=45.55&lng=-86.65&limit=1"];
+    
+    wikiURLString = [wikiURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *url = [NSURL URLWithString:wikiURLString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+                               
+                               
+                               NSDictionary *resultsFromWiki= [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                               
+                               
+                            NSArray  *searchResultsArray=[resultsFromWiki objectForKey:@"articles"];
+                               for (NSDictionary *dictionary in searchResultsArray) {
+                                   
+                                   NSString *articleID = [dictionary objectForKey:@"id"];
+                                   NSString *articleTitle = [dictionary objectForKey:@"title"];
+                                   NSString *wikiArticleURL = [dictionary objectForKey:@"url"];
+                                   NSLog(@"the title is %@",articleTitle);
+                               }
+    
+                           }];
+    
+}
 
 - (void)panDetected:(UIPanGestureRecognizer *)panRecognizer
 {
@@ -81,7 +126,7 @@
                                         panRecognizer.view.center.y + translation.y);
         
         // Set up height limit
-        if (newCenter.y >= maxY +90 && newCenter.y <= 300) {
+        if (newCenter.y >= maxY +160 && newCenter.y <= 300) {
             panRecognizer.view.center = newCenter;
             [panRecognizer setTranslation:CGPointZero inView:self.view];
         }

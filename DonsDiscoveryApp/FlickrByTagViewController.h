@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlickrByTagViewController : UICollectionViewController
+@interface FlickrByTagViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSString *tagText;
 @property  (strong, nonatomic) NSMutableArray *taggedImagesArray;
@@ -16,5 +16,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *taggedItemsCollectionView;
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet UIView *suggestionView;
+@property (strong, nonatomic) IBOutlet UILabel *suggestionViewLabel;
 
 @end
