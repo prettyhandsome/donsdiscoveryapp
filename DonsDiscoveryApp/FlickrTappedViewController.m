@@ -281,6 +281,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                        venueLng= [[[dictionary objectForKey:@"venue"] objectForKey:@"location"]objectForKey:@"lng"];
                                        venueName = [[dictionary objectForKey:@"venue"] objectForKey:@"name"];
                                        venueID = [[dictionary objectForKey:@"venue"] objectForKey:@"id"];
+                                   // could the venueID be added to the class? NSLog(@"venue ID %@", venueID);
                                        NSArray *tipArray = [dictionary objectForKey:@"text"];
                             
                                    
@@ -290,7 +291,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                               
                            }];
 
-    
+
 
 }
 -(void) setUpVenueMapAnnotationData {
@@ -320,6 +321,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     if ([segue.identifier isEqualToString:@"venueDetailsView"]) {
     
     ((FSVenueDetailViewController *)segue.destinationViewController).selectedVenue= selectedVenue;
+
         
     }
     else if ([segue.identifier isEqualToString:@"pushToCheckIns"]) {
@@ -327,6 +329,9 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
         ((RecentCheckInsViewController *)segue.destinationViewController).selectedVenue = selectedVenue; 
         
     }
+
+    
+
 }
 
 

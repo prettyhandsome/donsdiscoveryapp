@@ -30,6 +30,7 @@
 @end
 
 
+
 //NSString *kClientID = @"EBI30SCSCWA0UWVD5GRZI4HUGZNRLOTFGBVDVQB3FG2LU5O0";
 //NSString *kRedirectURI = @"http://www.mobilemakers.co";
 
@@ -106,6 +107,8 @@ NSString *kRedirectURI = @"http://www.mobilemakers.co";
         tokenString = [defaults stringForKey:@"access_token"];
         //[self.loginWebView removeFromSuperview];
         
+
+        [self.loginWebView removeFromSuperview];
     }
     
 }
