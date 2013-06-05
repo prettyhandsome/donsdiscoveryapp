@@ -17,14 +17,26 @@
 
 @interface LandingViewController ()
 
+{
+    
+    NSString *tokenString;
+}
+
+
 @property (strong, nonatomic) NSArray *landingOptions;
 @property (strong, nonatomic) NSString *searchStringOption;
+
 
 @end
 
 
-NSString *kClientID = @"EBI30SCSCWA0UWVD5GRZI4HUGZNRLOTFGBVDVQB3FG2LU5O0";
-NSString *kRedirectURI = @"app://testapp123";
+//NSString *kClientID = @"EBI30SCSCWA0UWVD5GRZI4HUGZNRLOTFGBVDVQB3FG2LU5O0";
+//NSString *kRedirectURI = @"http://www.mobilemakers.co";
+
+//Sonam foursquare info
+NSString *kClientID=@"MFDIXCKNSUTA01UKTJUUCPDLOU2QX3GA4NAFF4YFHGF1KDXH";
+NSString *kRedirectURI = @"http://www.mobilemakers.co";
+
 
 @implementation LandingViewController
 
@@ -71,29 +83,38 @@ NSString *kRedirectURI = @"app://testapp123";
     if ([request.URL.scheme isEqualToString:@"itms-apps"]) {
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;
+        
     }
     return YES;
+
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
     NSString *URLString = [[self.loginWebView.request URL] absoluteString];
     NSLog(@"--> %@", URLString);
+    
     // So this portion, i believe, once the user accepts, a link containing an access_token string. (http://YOUR_REGISTERED_REDIRECT_URI/#access_token=ACCESS_TOKEN) This looks for the string, and saves it as a default.  Not sure what to do with that, and it also doesn't really seem to have worked.
     
     if ([URLString rangeOfString:@"access_token="].location != NSNotFound) {
-        NSString *accessToken = [[URLString componentsSeparatedByString:@"="] lastObject];
-        NSLog(@"access token ---> %@", accessToken);
+        [self.loginWebView removeFromSuperview];
+        
+        _accessToken = [[URLString componentsSeparatedByString:@"="] lastObject];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:accessToken forKey:@"access_token"];
+        [defaults setObject:_accessToken forKey:@"access_token"];
         [defaults synchronize];
+        tokenString = [defaults stringForKey:@"access_token"];
+        //[self.loginWebView removeFromSuperview];
+        
     }
     
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     //if (error.code == NSURLErrorNotConnectedToInternet){
+    
     NSLog(@"Either logged in or offline.");
+    NSLog(@"access token ---> %@", tokenString);
     [self.loginWebView removeFromSuperview];
 }
 
@@ -106,6 +127,7 @@ NSString *kRedirectURI = @"app://testapp123";
 {
     // Return the number of sections.
     return 1;
+   
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

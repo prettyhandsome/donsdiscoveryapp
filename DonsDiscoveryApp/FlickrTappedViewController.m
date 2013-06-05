@@ -13,6 +13,7 @@
 #import "TappedPhotoAnnotation.h"
 #import "TappedPhotoAnnotationView.h"
 #import "FSVenueDetailViewController.h"
+#import "RecentCheckInsViewController.h"
 
 
 @interface FlickrTappedViewController ()
@@ -316,13 +317,22 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:@"venueDetailsView"]) {
     
-    ((FSVenueDetailViewController *)segue.destinationViewController).selectedVenue= selectedVenue; 
-   
+    ((FSVenueDetailViewController *)segue.destinationViewController).selectedVenue= selectedVenue;
+        
+    }
+    else if ([segue.identifier isEqualToString:@"pushToCheckIns"]) {
+        
+        ((RecentCheckInsViewController *)segue.destinationViewController).selectedVenue = selectedVenue; 
+        
+    }
 }
 
 
 
-
-
+- (IBAction)checkInButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"pushToCheckIns" sender:self];
+}
 @end

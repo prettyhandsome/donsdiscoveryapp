@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -175,6 +175,35 @@
             </objects>
             <point key="canvasLocation" x="490" y="-520"/>
         </scene>
+        <!--Recent Check Ins View Controller-->
+        <scene sceneID="32V-i3-Lnk">
+            <objects>
+                <viewController id="HuM-1z-E1Q" customClass="RecentCheckInsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vMJ-Ix-YCT">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nUu-es-d3T">
+                                <rect key="frame" x="0.0" y="79" width="320" height="337"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="HuM-1z-E1Q" id="MLr-B4-EDk"/>
+                                    <outlet property="delegate" destination="HuM-1z-E1Q" id="sad-tV-5z8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yvy-oE-bme"/>
+                    <connections>
+                        <outlet property="checkinTableView" destination="nUu-es-d3T" id="jwI-df-9za"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sJ-CJ-IzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1348" y="-1299"/>
+        </scene>
         <!--Flickr Tapped View Controller-->
         <scene sceneID="IuQ-7O-7Vo">
             <objects>
@@ -192,7 +221,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="41T-cT-uNf"/>
+                    <navigationItem key="navigationItem" id="41T-cT-uNf">
+                        <barButtonItem key="rightBarButtonItem" title="Check Ins" id="h3H-xt-jXV">
+                            <connections>
+                                <action selector="checkInButton:" destination="GE4-Ee-AWe" id="EnQ-Tm-BRV"/>
+                                <segue destination="HuM-1z-E1Q" kind="push" identifier="pushToCheckIns" id="nX2-9Q-2Jb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="hol-ha-DEW" id="mSc-sY-cuV"/>
                         <segue destination="YuN-cm-CCd" kind="push" identifier="venueDetailsView" id="uI5-7C-eSJ"/>
@@ -371,6 +407,7 @@
         <class className="FlickrTappedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrTappedViewController.h"/>
             <relationships>
+                <relationship kind="action" name="checkInButton:"/>
                 <relationship kind="outlet" name="latTextLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="popUpLabel" candidateClass="UILabel"/>
@@ -385,6 +422,12 @@
                 <relationship kind="outlet" name="loginWebView" candidateClass="UIWebView"/>
             </relationships>
         </class>
+        <class className="RecentCheckInsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentCheckInsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="checkinTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
         </class>
@@ -396,6 +439,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
