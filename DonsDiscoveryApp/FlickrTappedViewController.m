@@ -280,6 +280,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                        venueLng= [[[dictionary objectForKey:@"venue"] objectForKey:@"location"]objectForKey:@"lng"];
                                        venueName = [[dictionary objectForKey:@"venue"] objectForKey:@"name"];
                                        venueID = [[dictionary objectForKey:@"venue"] objectForKey:@"id"];
+                                   // could the venueID be added to the class? NSLog(@"venue ID %@", venueID);
                                        NSArray *tipArray = [dictionary objectForKey:@"text"];
                             
                                    
@@ -317,7 +318,8 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
-    ((FSVenueDetailViewController *)segue.destinationViewController).selectedVenue= selectedVenue; 
+    ((FSVenueDetailViewController *)segue.destinationViewController).selectedVenue= selectedVenue;
+    
    
 }
 

@@ -24,7 +24,7 @@
 
 
 NSString *kClientID = @"EBI30SCSCWA0UWVD5GRZI4HUGZNRLOTFGBVDVQB3FG2LU5O0";
-NSString *kRedirectURI = @"app://testapp123";
+NSString *kRedirectURI = @"http://mobilemakers.co";
 
 @implementation LandingViewController
 
@@ -87,6 +87,7 @@ NSString *kRedirectURI = @"app://testapp123";
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:accessToken forKey:@"access_token"];
         [defaults synchronize];
+        [self.loginWebView removeFromSuperview];
     }
     
 }
