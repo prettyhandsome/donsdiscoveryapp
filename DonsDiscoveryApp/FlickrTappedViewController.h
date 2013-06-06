@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *popUpLabel;
 
+- (IBAction)checkInButton:(id)sender;
 
 
 @end

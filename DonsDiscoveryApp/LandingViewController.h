@@ -14,9 +14,12 @@
 //web login properties
 @property (strong, nonatomic) IBOutlet UIWebView *loginWebView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong,nonatomic) NSString *accessToken; 
 
 //tableview
 @property (strong, nonatomic) IBOutlet UITableView *landingOptionsTableView;
 @property (nonatomic) IBOutlet BunnyTail *bunnyTail;
+
+
 
 @end
