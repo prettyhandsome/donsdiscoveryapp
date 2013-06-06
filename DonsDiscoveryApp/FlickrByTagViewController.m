@@ -250,7 +250,8 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     NSString *thumbURLString =individualTag.urlStringForTag;
     NSURL *thumbURL = [NSURL URLWithString: thumbURLString];
     
-    flickrByTagCell.tagImageView.image = nil; 
+    flickrByTagCell.tagImageView.image = nil;
+    flickrByTagCell.tagLabel.text = nil;
     
     [self downloadImageWithURL:thumbURL completionBlock:^(BOOL succeeded, UIImage *image) {
         if (succeeded) {

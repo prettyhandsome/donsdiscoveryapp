@@ -24,11 +24,13 @@
     //ekh wiki search terms
     NSArray         *searchArray;
     NSMutableArray  *wikiSearchResultArray;
-    NSDictionary    *locationDictionary;
+    //NSDictionary    *locationDictionary;
+    NSMutableString *venueDetailsString;
    
 }
 @property (strong, nonatomic) NSString  *venueCity;
 @property (strong, nonatomic) NSURL     * wikiFullURL;
+
 
 
 //-(void)makeWikiURLRequest;
@@ -56,7 +58,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    NSMutableString *venueDetailsString = [[NSMutableString alloc] init];
     [self parseFoursquareForWikiSearchTags];
 
     
@@ -64,7 +66,7 @@
     //Set up properties for selected venue (                   ekh: these come from the prev. vc)
     venueLat = _selectedVenue.venueLat;
     venueLong = _selectedVenue.venueLong;
-    NSLog(@"detail venue lat is %@ and lng is %@",venueLat,venueLong);
+    //NSLog(@"detail venue lat is %@ and lng is %@",venueLat,venueLong);
     venueName= _selectedVenue.title;
     _venueNameLabel.text =venueName;
     
@@ -189,7 +191,7 @@
 
     
     NSString *tappedVenueDetails= [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@?v=20120321&oauth_token=%@", self.selectedVenue.venueID, foursquareClientID];
-    NSLog(@"%@ <-- link with fs token?", tappedVenueDetails)
+    NSLog(@"line 192: %@ <-- link with fs token?", tappedVenueDetails)
     ;
     
     NSURL *tappedVenueDetailsURL = [NSURL URLWithString:tappedVenueDetails];
@@ -204,10 +206,10 @@
                                
                                NSDictionary *responseDictionary = [completeVenueDict objectForKey:@"response"];
                                NSDictionary *venueDictionary = [responseDictionary objectForKey:@"venue"];
-                               locationDictionary = [venueDictionary objectForKey:@"location"];
+                               NSDictionary* locationDictionary = [venueDictionary objectForKey:@"location"];
+                               NSString *venueURL = [venueDictionary objectForKey:@"canonicalUrl"];
                                
                                self.venueCity = [locationDictionary objectForKey:@"city"];
-                               NSString *venueURL = [locationDictionary objectForKey:@"url"];
                                
                 
                                NSString *venueOpen = [[locationDictionary objectForKey:@"hours"] objectForKey:@"status"];
@@ -215,20 +217,40 @@
                                NSString *venueRating = [locationDictionary objectForKey:@"rating"];
                                NSMutableArray *venueCategories = [locationDictionary objectForKey:@"categories"];
                               
-                               //throw this one level a level?
-                                                             
-                               self.websiteLabel.text = venueURL;
-                               self.openLabel.text = venueOpen;
+                               
+                               if (venueOpen != nil) {
+                                   [venueDetailsString appendString:venueOpen];
+                               }else {
+                                   NSLog(@"no hours info");
+                                   
+                               if (venueURL != nil) {
+                                   [venueDetailsString appendString:venueURL];
+                               } else {
+                                   NSLog(@"no url");
+                               }
+                               
+                               if (venueOpen != nil) {
+                                   [venueDetailsString appendString:venueOpen];
+                               }else {
+                                   NSLog(@"no hours info");
+                                   
                                self.phoneLabel.text = venueContact;
                                self.ratingLabel.text = venueRating;
                                if (![venueCategories objectAtIndex:0] >=0) {
                                    NSString *venueFirstCategory = [venueCategories objectAtIndex:0];
                                    self.categoryLabel.text = venueFirstCategory;}
-
+// for each of theset things that are not nil, append them to a string followed by \n
+                               
+                               if (venueURL == nil) {
+                                   NSLog(@"crazy");
+                               }
+                               NSLog(@"line 228:VenueWebsite label: %@", venueURL);
                                [self loadWikiCollectionView];
                            }];
-// flow hits here first, called in VDL   then returns to VDL to load wiki for the first time (generic search)
-    NSLog(@"foursquareCity = %@", self.venueCity);
+
+    // runs this first, skipping the NSURLConnection, when called in VDL. Returns to VDL to load wiki for the first time (generic search) as part of the tableview creation before being populated. So, i have to load the connection view in the block or the wiki won't load with the data.  I tried placing this method in the init, to run it before VDL, but the VDL methods were faster. 
+    
+    NSLog(@"line 234:foursquareCity = %@", self.venueCity);
 
 }
 
@@ -245,7 +267,7 @@
 
     NSURL *wikiSearchURL = [NSURL URLWithString:wikiURLString];
     NSURLRequest *wikiSearchRequest = [NSURLRequest requestWithURL:wikiSearchURL];
-    NSLog(@"url searchURL: %@",wikiSearchURL);
+    NSLog(@"line 251:wikiSearchURL: %@",wikiSearchURL);
     
     
     [NSURLConnection sendAsynchronousRequest:wikiSearchRequest
@@ -263,12 +285,12 @@
                                
                                for (NSDictionary *wikiSearchDictionary in searchArray) {
                                    
-                                   FSVenueDetail_WikiObject *wikiObject = [[FSVenueDetail_WikiObject alloc] init];
+                                   FSVenueDetail_WikiObject *cellWikiObject = [[FSVenueDetail_WikiObject alloc] init];
                                    
                                    
-                                   wikiObject.wikiTitle = [wikiSearchDictionary objectForKey:@"title"];
+                                   cellWikiObject.wikiTitle = [wikiSearchDictionary objectForKey:@"title"];
                                 
-                                   [wikiSearchResultArray addObject: wikiObject];
+                                   [wikiSearchResultArray addObject: cellWikiObject];
                                                                 
                                }
                                [self.wikiCollectionView reloadData];
@@ -304,7 +326,6 @@
     FSVenueDetail_WikiObject *wikiObject = [wikiSearchResultArray objectAtIndex:indexPath.item];
     
     wikiCell.wikiLabel.text = wikiObject.wikiTitle;
-    
     NSString *wikiSearchByTitle = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/%@",wikiObject.wikiTitle];
     NSString *wikiTitleUrlString = [wikiSearchByTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     

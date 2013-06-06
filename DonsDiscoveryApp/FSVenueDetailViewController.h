@@ -17,11 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *venueNameLabel;
 @property (strong, nonatomic) FourSquareVenue *selectedVenue; 
-@property (strong, nonatomic) IBOutlet UILabel *websiteLabel;
-@property (strong, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (strong, nonatomic) IBOutlet UILabel *openLabel;
-@property (strong, nonatomic) IBOutlet UILabel *ratingLabel;
-@property (strong, nonatomic) IBOutlet UILabel *categoryLabel;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *wikiBottomBarImage;
 
