@@ -14,6 +14,7 @@
 @property (nonatomic,assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *venueLat;
 @property (nonatomic, copy) NSString *venueLong;
+@property (nonatomic, copy) NSString *venueID;
 
 @property(nonatomic,copy)   NSString *subtitle;
 @property (nonatomic, copy) NSString *title;
