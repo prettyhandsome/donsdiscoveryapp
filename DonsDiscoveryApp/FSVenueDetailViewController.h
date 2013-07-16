@@ -17,9 +17,14 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *venueNameLabel;
 @property (strong, nonatomic) FourSquareVenue *selectedVenue; 
+@property (strong, nonatomic) IBOutlet UILabel *venueOpenLabel;
+@property (strong, nonatomic) IBOutlet UILabel *venueURLLable;
+@property (strong, nonatomic) IBOutlet UILabel *VenuePhoneLabel;
+@property (strong, nonatomic) IBOutlet UILabel *venueRatingLabel;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *wikiBottomBarImage;
+@property (strong, nonatomic) IBOutlet UIView *wikiBottomBarView;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *wikiCollectionView;
 @end

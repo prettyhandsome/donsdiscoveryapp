@@ -20,6 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController.navigationBar
+     setBackgroundImage:[UIImage imageNamed:@"RabbitNavBar-sky.png"]
+     forBarMetrics:UIBarMetricsDefault];
+    
     
 }
 

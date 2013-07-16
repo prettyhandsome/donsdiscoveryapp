@@ -32,11 +32,14 @@
 
 -(void)rabbitTailBounce{
     
-    CGPoint leftPos = CGPointMake(160, 238);
+    float xCenter = (self.superview.frame.size.width/2);
+    float yCenter = ((self.superview.frame.size.height/2)-73);
+
+    CGPoint leftPos = CGPointMake(xCenter, yCenter);
     self.center = leftPos;
 
     
-    CGPoint rightPos = CGPointMake(leftPos.x+3, leftPos.y+0.5);
+    CGPoint rightPos = CGPointMake(leftPos.x+.5, leftPos.y+0.5);
     
     [UIView animateWithDuration:0.2
                           delay:1.0

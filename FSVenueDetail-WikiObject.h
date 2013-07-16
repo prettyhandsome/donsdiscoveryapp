@@ -11,5 +11,6 @@
 @interface FSVenueDetail_WikiObject : NSObject
 
 @property (strong, nonatomic) NSString * wikiTitle;
+@property (strong, nonatomic) NSURL *wikiMainURL;
 
 @end

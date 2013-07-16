@@ -39,6 +39,8 @@
 		A4673DD8175A7B5300FD0E6C /* rabbit-hole-landingTail.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673DD6175A7B5300FD0E6C /* rabbit-hole-landingTail.png */; };
 		A4673DDB175A7E2400FD0E6C /* BunnyTail.m in Sources */ = {isa = PBXBuildFile; fileRef = A4673DDA175A7E2400FD0E6C /* BunnyTail.m */; };
 		A4673E06175D27DA00FD0E6C /* rabbit-hole-home.png in Resources */ = {isa = PBXBuildFile; fileRef = A4673E05175D27DA00FD0E6C /* rabbit-hole-home.png */; };
+		A4764F60176170E9003DE858 /* rabbitNavBar-sky.png in Resources */ = {isa = PBXBuildFile; fileRef = A4764F5F176170E9003DE858 /* rabbitNavBar-sky.png */; };
+		A4764F621761714E003DE858 /* RabbitNavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = A4764F611761714E003DE858 /* RabbitNavBar.png */; };
 		A4E107E2175EB3FD00CCA1AD /* FSVenueDetail-WikiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E107E1175EB3FD00CCA1AD /* FSVenueDetail-WikiCell.m */; };
 		A4E107E8175EE2DE00CCA1AD /* FSVenueDetail-WikiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E107E7175EE2DE00CCA1AD /* FSVenueDetail-WikiObject.m */; };
 		A4E107EA175F01E100CCA1AD /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E107E9175F01E000CCA1AD /* app-icon.png */; };
@@ -96,11 +98,14 @@
 		A4673DD9175A7E2400FD0E6C /* BunnyTail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BunnyTail.h; sourceTree = "<group>"; };
 		A4673DDA175A7E2400FD0E6C /* BunnyTail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BunnyTail.m; sourceTree = "<group>"; };
 		A4673E05175D27DA00FD0E6C /* rabbit-hole-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rabbit-hole-home.png"; sourceTree = "<group>"; };
+		A4764F5F176170E9003DE858 /* rabbitNavBar-sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rabbitNavBar-sky.png"; sourceTree = "<group>"; };
+		A4764F611761714E003DE858 /* RabbitNavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RabbitNavBar.png; sourceTree = "<group>"; };
+		A4D78E331795A1AA00F165DD /* Znikomit.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Znikomit.otf; sourceTree = "<group>"; };
 		A4E107E0175EB3FD00CCA1AD /* FSVenueDetail-WikiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSVenueDetail-WikiCell.h"; sourceTree = "<group>"; };
 		A4E107E1175EB3FD00CCA1AD /* FSVenueDetail-WikiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSVenueDetail-WikiCell.m"; sourceTree = "<group>"; };
 		A4E107E6175EE2DE00CCA1AD /* FSVenueDetail-WikiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FSVenueDetail-WikiObject.h"; path = "../FSVenueDetail-WikiObject.h"; sourceTree = "<group>"; };
 		A4E107E7175EE2DE00CCA1AD /* FSVenueDetail-WikiObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FSVenueDetail-WikiObject.m"; path = "../FSVenueDetail-WikiObject.m"; sourceTree = "<group>"; };
-		A4E107E9175F01E000CCA1AD /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
+		A4E107E9175F01E000CCA1AD /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app-icon.png"; path = "../app-icon.png"; sourceTree = "<group>"; };
 		A4F464E617566ABE008D2C98 /* FlickrByLocCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrByLocCell.h; sourceTree = "<group>"; };
 		A4F464E717566ABE008D2C98 /* FlickrByLocCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrByLocCell.m; sourceTree = "<group>"; };
 		A4F464E817566ABE008D2C98 /* FlickrByLocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrByLocViewController.h; sourceTree = "<group>"; };
@@ -191,7 +196,6 @@
 		5BD5178D1755B82D00703400 = {
 			isa = PBXGroup;
 			children = (
-				A4E107E9175F01E000CCA1AD /* app-icon.png */,
 				5BD5179F1755B82D00703400 /* DonsDiscoveryApp */,
 				5BD517981755B82D00703400 /* Frameworks */,
 				5BD517971755B82D00703400 /* Products */,
@@ -252,6 +256,10 @@
 		5BD517A01755B82D00703400 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A4D78E331795A1AA00F165DD /* Znikomit.otf */,
+				A4764F611761714E003DE858 /* RabbitNavBar.png */,
+				A4764F5F176170E9003DE858 /* rabbitNavBar-sky.png */,
+				A4E107E9175F01E000CCA1AD /* app-icon.png */,
 				A4673E05175D27DA00FD0E6C /* rabbit-hole-home.png */,
 				2943AACA175C03E4003E7C20 /* upArrow.png */,
 				29368EE0175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png */,
@@ -348,6 +356,8 @@
 				29368EE1175C5A0B0092B6F9 /* Dig_Deeper_BottomBar_v2.png in Resources */,
 				A4673E06175D27DA00FD0E6C /* rabbit-hole-home.png in Resources */,
 				A4E107EA175F01E100CCA1AD /* app-icon.png in Resources */,
+				A4764F60176170E9003DE858 /* rabbitNavBar-sky.png in Resources */,
+				A4764F621761714E003DE858 /* RabbitNavBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,12 +384,9 @@
 				A4673DDB175A7E2400FD0E6C /* BunnyTail.m in Sources */,
 				2943AAC1175BC009003E7C20 /* FSVenueDetailViewController.m in Sources */,
 				2943AAC6175BC087003E7C20 /* WikiDragUpView.m in Sources */,
-
 				295D521E175D3FCB00999FA1 /* RecentCheckInsViewController.m in Sources */,
-
 				A4E107E2175EB3FD00CCA1AD /* FSVenueDetail-WikiCell.m in Sources */,
 				A4E107E8175EE2DE00CCA1AD /* FSVenueDetail-WikiObject.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
