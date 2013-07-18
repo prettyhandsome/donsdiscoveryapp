@@ -19,6 +19,7 @@
 //tableview
 @property (strong, nonatomic) IBOutlet UITableView *landingOptionsTableView;
 @property (nonatomic) IBOutlet BunnyTail *bunnyTail;
+@property (strong, nonatomic) IBOutlet UILabel *hopLabel;
 
 
 

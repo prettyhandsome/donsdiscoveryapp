@@ -33,13 +33,15 @@
 -(void)rabbitTailBounce{
     
     float xCenter = (self.superview.frame.size.width/2);
-    float yCenter = ((self.superview.frame.size.height/2)-73);
+    float yCenter = ((self.superview.frame.size.height/2)+30);
 
-    CGPoint leftPos = CGPointMake(xCenter, yCenter);
-    self.center = leftPos;
+    CGPoint centerPos = CGPointMake(xCenter, yCenter);
+    self.center = centerPos;
 
     
-    CGPoint rightPos = CGPointMake(leftPos.x+.5, leftPos.y+0.5);
+    CGPoint rightPos = CGPointMake(centerPos.x+1, centerPos.y+1);
+    CGPoint leftPos = CGPointMake(centerPos.x-1, centerPos.y-1);
+
     
     [UIView animateWithDuration:0.2
                           delay:1.0
@@ -51,22 +53,31 @@
                      completion:^(BOOL finished){
                          [UIView animateWithDuration:0.2
                                                delay:0.1
-                                             options: ((UIViewAnimationOptions)(UIViewAnimationCurveEaseOut))
+                                             options: ((UIViewAnimationOptions)(UIViewAnimationCurveEaseInOut))
                                           animations:^{
-                                              self.center = leftPos;
+                                              self.center = centerPos;
                                           }
                                           completion:^(BOOL finished){
                                                   
                                               [UIView animateWithDuration:0.5
                                                                     delay:0.1
-                                                                  options: ((UIViewAnimationOptions)(UIViewAnimationCurveEaseOut))
+                                                                  options: ((UIViewAnimationOptions)(UIViewAnimationCurveEaseInOut))
                                                                animations:^{
                                                                    
                                                                    self.transform = CGAffineTransformMakeRotation(20 * M_PI/180);
                                                                }
                                                                completion:^(BOOL finished){
-                                                                   
-                                                                   NSLog(@"Done!");
+                                                                   [UIView animateWithDuration:0.2
+                                                                                         delay:0.1
+                                                                                       options: ((UIViewAnimationOptions)(UIViewAnimationCurveEaseInOut))
+                                                                                    animations:^{
+                                                                                        self.center = leftPos;
+                                                                                    }
+                                                                                    completion:^(BOOL finished){
+                                                                                        
+                                                                                        NSLog(@"Done!");
+
+                                                                                    }];
                                                                }];
                                           }];
                      }];

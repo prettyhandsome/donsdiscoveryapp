@@ -29,6 +29,7 @@
 }
 @property (strong, nonatomic) NSString  *venueCity;
 @property (strong, nonatomic) NSURL     * wikiFullURL;
+@property (strong, nonatomic) NSString  *wikiTruncatedTitle;
 
 
 
@@ -58,10 +59,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self parseFoursquareForWikiSearchTags];
-
+    //UIFont *znikomit = [UIFont fontWithName:@"Znikomit" size:self.venueNameLabel.font.pointSize];
+    //self.venueNameLabel.font = znikomit;
     
     //[self makeWikiURLRequest];
-    //Set up properties for selected venue (                   ekh: these come from the prev. vc)
+    //Set up properties for selected venue (ekh: these come from the prev. vc)
     venueLat = _selectedVenue.venueLat;
     venueLong = _selectedVenue.venueLong;
     //NSLog(@"detail venue lat is %@ and lng is %@",venueLat,venueLong);
@@ -137,7 +139,8 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    return YES;
+    //ekh - I changed this to no, so that this gesture recognizer was not being activated when you interacted with the collection view. 
+    return NO;
 }
 
 #pragma 
@@ -302,13 +305,23 @@
     FSVenueDetail_WikiObject *wikiCellObject = [wikiSearchResultArray objectAtIndex:indexPath.item];
     
     NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
-    NSString *wikiFirstPara =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].textContent"];
     [wikiCollCell.wikiWebView loadRequest:wikiSelectionRequest];
+
+    NSString *wikiWebTitle =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('title')[0].textContent"];
+    NSLog(@"title: %@ char count: %d", wikiWebTitle, [wikiWebTitle length]);
+    if ([wikiWebTitle length] >0){
+        NSUInteger wikiBoilerIndex = [wikiWebTitle length]-35;
+        NSRange wikiBoilerRange = [wikiWebTitle rangeOfComposedCharacterSequenceAtIndex:wikiBoilerIndex];
+        self.wikiTruncatedTitle = [wikiWebTitle substringToIndex: wikiBoilerRange.location];
+
+    }
         
+    NSString *wikiFirstPara =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].textContent"];
     NSLog(@"%@", wikiFirstPara);
     
-    wikiCollCell.wikiLabel.text = wikiCellObject.wikiTitle;
-        wikiCollCell.wikifirstParaText.text = wikiFirstPara;
+            
+    wikiCollCell.wikiLabel.text = self.wikiTruncatedTitle;
+    wikiCollCell.wikifirstParaText.text = wikiFirstPara;
 
 
     return wikiCollCell;

@@ -27,4 +27,5 @@
 @property (strong, nonatomic) IBOutlet UIView *wikiBottomBarView;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *wikiCollectionView;
+@property (strong, nonatomic) IBOutlet UITableView *wikiTableView;
 @end

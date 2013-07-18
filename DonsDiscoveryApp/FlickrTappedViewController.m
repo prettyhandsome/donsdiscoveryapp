@@ -156,8 +156,8 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     tappedPhotoAnnotation.title = tappedPhotoTitle;
          
     CLLocationCoordinate2D center = tappedPhotoAnnotation.coordinate;
-    
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
+    //ekh-i changed this from .2, just because zooming on the simulator was making me crazy, feel free to adjust back.
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.003, 0.003);
     MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
     
     self.mapView.region = region;

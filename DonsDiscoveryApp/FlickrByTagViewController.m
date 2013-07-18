@@ -53,6 +53,8 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     //download the current coord.
     [self startStandardUpdates];
     [self chooseSuggestion];
+    //UIFont *znikomit = [UIFont fontWithName:@"Znikomit" size:self.suggestionViewLabel.font.pointSize];
+    //self.suggestionViewLabel.font = znikomit;
     
 
 }
@@ -224,7 +226,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
 
 #pragma
-#pragma mark Set Table View
+#pragma mark Set Collection View
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     

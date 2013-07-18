@@ -65,9 +65,12 @@ NSString *kRedirectURI = @"http://www.mobilemakers.co";
     
     [self.bunnyTail rabbitTailBounce];
 
+    //UIFont *znikomit = [UIFont fontWithName:@"Znikomit" size:self.hopLabel.font.pointSize];
+    //self.hopLabel.font = znikomit;
     
 // related to table view for generating tag search collection, and segue to gallery view
     self.landingOptions = [NSArray arrayWithObjects: @"food", @"drink", @"art & architecture", @"events", @"feeling lucky", nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
