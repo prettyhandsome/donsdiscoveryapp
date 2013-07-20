@@ -13,13 +13,14 @@
 #import "FSVenueDetail-WikiCell.h"
 #import "FSVenueDetail-WikiObject.h"
 
-@interface FSVenueDetailViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface FSVenueDetailViewController : UIViewController <UIGestureRecognizerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UILabel *venueNameLabel;
 @property (strong, nonatomic) FourSquareVenue *selectedVenue; 
 @property (strong, nonatomic) IBOutlet UILabel *venueOpenLabel;
-@property (strong, nonatomic) IBOutlet UILabel *venueURLLable;
-@property (strong, nonatomic) IBOutlet UILabel *VenuePhoneLabel;
+@property (strong, nonatomic) IBOutlet UITextView *venueURLView;
+@property (strong, nonatomic) IBOutlet UITextView *locationTextView;
+@property (strong, nonatomic) IBOutlet UITextView *phoneTextVIew;
 @property (strong, nonatomic) IBOutlet UILabel *venueRatingLabel;
 
 
@@ -27,5 +28,4 @@
 @property (strong, nonatomic) IBOutlet UIView *wikiBottomBarView;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *wikiCollectionView;
-@property (strong, nonatomic) IBOutlet UITableView *wikiTableView;
 @end

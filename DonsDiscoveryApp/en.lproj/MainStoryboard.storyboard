@@ -193,58 +193,55 @@
                                         <rect key="frame" x="0.0" y="51" width="320" height="222"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <imageView contentMode="scaleAspectFit" image="Dig_Deeper_BottomBar_v2.png" id="Wsf-oP-QAr">
-                                                <rect key="frame" x="0.0" y="0.0" width="317" height="222"/>
+                                            <imageView contentMode="TopLeft" image="Dig_Deeper_BottomBar_v2.png" id="Wsf-oP-QAr">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="222"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                                 </accessibility>
                                             </imageView>
-                                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="rQF-Wz-ORj">
-                                                <rect key="frame" x="0.0" y="92" width="325" height="250"/>
+                                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="rQF-Wz-ORj">
+                                                <rect key="frame" x="0.0" y="59" width="325" height="283"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <inset key="contentInset" minX="0.0" minY="0.0" maxX="7" maxY="0.0"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BgV-eL-qbO">
-                                                    <size key="itemSize" width="258" height="256"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
-                                                </collectionViewFlowLayout>
+                                                <collectionViewLayout key="collectionViewLayout" id="JCa-Kg-YiG" customClass="WikiCollectionFlowLayout"/>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" reuseIdentifier="wikiCell" id="rrd-mp-UzA" customClass="FSVenueDetail_WikiCell">
-                                                        <rect key="frame" x="33" y="0.0" width="258" height="256"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="wikiCell" id="rrd-mp-UzA" customClass="FSVenueDetail_WikiCell">
+                                                        <rect key="frame" x="12" y="0.0" width="300" height="154"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="256"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="154"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <webView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="bottom" id="eix-1f-MVj">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="474" height="473"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="266" height="259"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <dataDetectorType key="dataDetectorTypes"/>
                                                                 </webView>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" editable="NO" id="r96-qd-zU2">
-                                                                    <rect key="frame" x="0.0" y="29" width="272" height="130"/>
+                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" editable="NO" id="r96-qd-zU2">
+                                                                    <rect key="frame" x="0.0" y="28" width="280" height="133"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 </textView>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="3O5-Bg-lVv">
-                                                                    <rect key="frame" x="1" y="0.0" width="262" height="27"/>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.79999999999999993" adjustsLetterSpacingToFitWidth="YES" id="3O5-Bg-lVv">
+                                                                    <rect key="frame" x="7" y="0.0" width="285" height="27"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <size key="customSize" width="300" height="154"/>
                                                         <connections>
                                                             <outlet property="wikiLabel" destination="3O5-Bg-lVv" id="kGU-da-6SA"/>
                                                             <outlet property="wikiWebView" destination="eix-1f-MVj" id="bTA-6n-iJ6"/>
@@ -267,29 +264,15 @@
                                     <outletCollection property="gestureRecognizers" destination="FdM-gG-IXu" appends="YES" id="yC6-0D-bdJ"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Open?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PD2-XH-ZYy">
-                                <rect key="frame" x="20" y="66" width="260" height="15"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Is this venue open?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PD2-XH-ZYy">
+                                <rect key="frame" x="20" y="66" width="260" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="url" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sfe-yI-TrQ">
-                                <rect key="frame" x="20" y="98" width="260" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kR0-rW-6AP">
-                                <rect key="frame" x="68" y="49" width="215" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dem-BB-MIE">
-                                <rect key="frame" x="20" y="82" width="260" height="15"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="out of 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kR0-rW-6AP">
+                                <rect key="frame" x="68" y="49" width="215" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -302,17 +285,42 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" contentMode="TopLeft" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="url" id="c3F-0o-iz2">
+                                <rect key="frame" x="13" y="92" width="240" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="phone" id="T4W-pd-y1R">
+                                <rect key="frame" x="12" y="74" width="240" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                            </textView>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="venue location" id="7Xg-Fh-nP8">
+                                <rect key="frame" x="12" y="113" width="240" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.72941176470000002" green="0.86666666670000003" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="wsK-qH-gmT"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="VenuePhoneLabel" destination="dem-BB-MIE" id="GY7-So-jc8"/>
+                        <outlet property="locationTextView" destination="7Xg-Fh-nP8" id="Wwk-qL-nKf"/>
+                        <outlet property="phoneTextVIew" destination="T4W-pd-y1R" id="05p-T1-NWY"/>
                         <outlet property="venueNameLabel" destination="uZJ-mQ-LKI" id="nxa-cU-w1y"/>
                         <outlet property="venueOpenLabel" destination="PD2-XH-ZYy" id="uoh-vr-Sbf"/>
                         <outlet property="venueRatingLabel" destination="kR0-rW-6AP" id="nWM-fK-gKs"/>
-                        <outlet property="venueURLLable" destination="Sfe-yI-TrQ" id="vtJ-PX-SmK"/>
+                        <outlet property="venueURLView" destination="c3F-0o-iz2" id="b5z-Sh-D9t"/>
                         <outlet property="wikiBottomBarImage" destination="Wsf-oP-QAr" id="Pda-EN-9qr"/>
                         <outlet property="wikiBottomBarView" destination="n4e-fM-xBK" id="NuJ-aK-KC1"/>
                         <outlet property="wikiCollectionView" destination="rQF-Wz-ORj" id="Qgf-WV-Cmf"/>
@@ -386,7 +394,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Dig_Deeper_BottomBar_v2.png" width="600" height="330"/>
+        <image name="Dig_Deeper_BottomBar_v2.png" width="320" height="276"/>
         <image name="connect-white.png" width="150" height="24"/>
         <image name="rabbit-hole-home.png" width="320" height="548"/>
         <image name="rabbit-hole-landing.png" width="320" height="155"/>
@@ -399,15 +407,15 @@
         <class className="FSVenueDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FSVenueDetailViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="VenuePhoneLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="phoneTextVIew" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="venueNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="venueOpenLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="venueRatingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="venueURLLable" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="venueURLView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="wikiBottomBarImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="wikiBottomBarView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="wikiCollectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="wikiTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="FSVenueDetail_WikiCell" superclassName="UICollectionViewCell">
@@ -467,6 +475,9 @@
             <relationships>
                 <relationship kind="action" name="connectToFSwithButton:"/>
             </relationships>
+        </class>
+        <class className="WikiCollectionFlowLayout" superclassName="UICollectionViewFlowLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WikiCollectionFlowLayout.h"/>
         </class>
         <class className="WikiDragUpView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WikiDragUpView.h"/>

@@ -21,10 +21,10 @@
     CGPoint originalPoint; 
 
     //ekh wiki search terms
-    NSArray         *searchArray;
-    NSMutableArray  *wikiSearchResultArray;
-    //NSDictionary    *locationDictionary;
-    NSMutableString *venueDetailsString;
+    NSArray             *searchArray;
+    NSMutableArray      *wikiSearchResultArray;
+    //NSDictionary      *locationDictionary;
+    NSString            *venueFirstCategory;
    
 }
 @property (strong, nonatomic) NSString  *venueCity;
@@ -176,7 +176,12 @@
                                self.venueCity = [locationDictionary objectForKey:@"city"];
                                NSString *venueAddress = [locationDictionary objectForKey:@"address"];
                                NSString *venueCrossStreet = [locationDictionary objectForKey:@"crossStreet"];
-                               NSLog(@"%@: %@, %@, %@", venueName, venueAddress, venueCrossStreet, self.venueCity);
+                               if (venueCrossStreet==nil) {
+                                   venueCrossStreet = @"";
+                               }
+                               NSMutableString *venueAddressString = [NSMutableString stringWithFormat:@"%@, %@ \n%@", venueAddress, self.venueCity, venueCrossStreet];
+                               self.locationTextView.text = venueAddressString;
+                               
                                
                                
                                NSDictionary  *contactDictionary = [venueDictionary objectForKey:@"contact"];
@@ -188,7 +193,13 @@
                                NSLog (@"is open: %@", venueOpen);
                                
                                
-                               NSMutableArray *venueCategories = [locationDictionary objectForKey:@"categories"];
+                               NSMutableArray *venueCategories = [venueDictionary objectForKey:@"categories"];
+                               if (![venueCategories objectAtIndex:0] >=0){
+                                   NSDictionary *venueCat1Dict = [venueCategories objectAtIndex:0];
+                                   venueFirstCategory = [venueCat1Dict objectForKey:@"name"];
+                                   NSLog(@"categories: %@",venueCategories);
+                               } else {
+                                   NSLog(@"no categories");}
                             
     
                                if (venueOpen != nil){
@@ -198,15 +209,15 @@
                                }
                                
                                if (venueURL != nil){
-                                   self.venueURLLable.text = venueURL;
+                                   self.venueURLView.text = venueURL;
                                } else {
-                                   self.venueURLLable.text = @"No website information available.";
+                                   self.venueURLView.text = @"No website information available.";
                                }
                                
                                if (venueContact!= nil){
-                                   self.VenuePhoneLabel.text = venueContact;
+                                   self.phoneTextVIew.text = venueContact;
                                } else {
-                                   self.VenuePhoneLabel.text = @"No phone number available.";
+                                   self.phoneTextVIew.text = @"No phone number available.";
                                }
                                
                                if (venueRating != nil){
@@ -215,11 +226,6 @@
                                } else {
                                    self.venueRatingLabel.text= @"This venue has not been rated.";}
                                
-                               if (![venueCategories objectAtIndex:0] >=0){
-                                   NSString *venueFirstCategory = [venueCategories objectAtIndex:0];
-                                   NSLog(@"categories: %@",venueCategories);
-                               } else {
-                                   NSLog(@"categories: %@",venueCategories);}
                               
                                [self loadWikiCollectionView];
                                
@@ -234,7 +240,7 @@
 //this is a prime candidate for stuff to put on the not main thread.
     wikiSearchResultArray = [[NSMutableArray alloc] init];
     
-    NSString *wikiConcantenateString = [NSString stringWithFormat:@"http://en.wikipedia.org/w/api.php?action=query&prop=info&inprop=url&format=json&list=search&srsearch=%@ local", self.venueCity];
+    NSString *wikiConcantenateString = [NSString stringWithFormat:@"http://en.wikipedia.org/w/api.php?action=query&prop=info&inprop=url&format=json&list=search&srsearch=%@ %@", self.venueCity, venueFirstCategory];
     
     NSString *wikiURLString = [wikiConcantenateString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     //change to tag or hard code an appropriate choice: arts cuisine events (by city)  beverages by country.
@@ -302,7 +308,8 @@
     FSVenueDetail_WikiCell *wikiCollCell = [self.wikiCollectionView dequeueReusableCellWithReuseIdentifier: @"wikiCell" forIndexPath:indexPath];
     //the documentation says that if you dequeue, the cell will never be nil, so i removed the if cell = nil part.
 
-    FSVenueDetail_WikiObject *wikiCellObject = [wikiSearchResultArray objectAtIndex:indexPath.item];
+    FSVenueDetail_WikiObject *wikiCellObject = [wikiSearchResultArray objectAtIndex:indexPath.row];
+    //row vs. item may be the slow loading issue or not?
     
     NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
     [wikiCollCell.wikiWebView loadRequest:wikiSelectionRequest];
