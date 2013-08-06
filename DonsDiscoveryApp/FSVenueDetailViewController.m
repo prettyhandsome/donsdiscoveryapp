@@ -8,6 +8,7 @@
 
 #import "FSVenueDetailViewController.h"
 
+static NSString *CellIdentifier = @"CellIdentifier";
 
 @interface FSVenueDetailViewController ()
 {
@@ -18,7 +19,7 @@
 
     CGPoint _originalCenter;
     WikiDragUpView *wikiView;
-    CGPoint originalPoint; 
+    CGPoint originalPoint;
 
     //ekh wiki search terms
     NSArray             *searchArray;
@@ -29,7 +30,9 @@
 }
 @property (strong, nonatomic) NSString  *venueCity;
 @property (strong, nonatomic) NSURL     * wikiFullURL;
-@property (strong, nonatomic) NSString  *wikiTruncatedTitle;
+@property (nonatomic, strong) NSOperationQueue *wikiQueue;
+
+
 
 
 
@@ -59,8 +62,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self parseFoursquareForWikiSearchTags];
-    //UIFont *znikomit = [UIFont fontWithName:@"Znikomit" size:self.venueNameLabel.font.pointSize];
-    //self.venueNameLabel.font = znikomit;
     
     //[self makeWikiURLRequest];
     //Set up properties for selected venue (ekh: these come from the prev. vc)
@@ -79,6 +80,11 @@
     
     [self.wikiBottomBarView addGestureRecognizer:panRecognizer];
     
+    self.wikiQueue = [[NSOperationQueue alloc] init];self.wikiQueue.maxConcurrentOperationCount = 3;
+    
+    // Register our classes so we can use our custom subclassed cell and header
+    //[self.wikiCollectionView setCollectionViewLayout:wikiLayout animated:NO];
+    [self.wikiCollectionView registerClass:[FSVenueDetail_WikiCell class] forCellWithReuseIdentifier:CellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,6 +115,7 @@
         if (newCenter.y >= maxY + 90 && newCenter.y <= 300) {
             panRecognizer.view.center = newCenter;
             [panRecognizer setTranslation:CGPointZero inView:self.view];
+            
         }
         
     }
@@ -194,7 +201,8 @@
                                
                                
                                NSMutableArray *venueCategories = [venueDictionary objectForKey:@"categories"];
-                               if (![venueCategories objectAtIndex:0] >=0){
+                               if ([venueCategories count] !=0){
+                               //if ([venueCategories objectAtIndex:0] != nil){
                                    NSDictionary *venueCat1Dict = [venueCategories objectAtIndex:0];
                                    venueFirstCategory = [venueCat1Dict objectForKey:@"name"];
                                    NSLog(@"categories: %@",venueCategories);
@@ -243,14 +251,13 @@
     NSString *wikiConcantenateString = [NSString stringWithFormat:@"http://en.wikipedia.org/w/api.php?action=query&prop=info&inprop=url&format=json&list=search&srsearch=%@ %@", self.venueCity, venueFirstCategory];
     
     NSString *wikiURLString = [wikiConcantenateString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    //change to tag or hard code an appropriate choice: arts cuisine events (by city)  beverages by country.
     
 
     NSURL *wikiSearchURL = [NSURL URLWithString:wikiURLString];
     NSURLRequest *wikiSearchRequest = [NSURLRequest requestWithURL:wikiSearchURL];
-    NSLog(@"line 259:wikiSearchURL: %@",wikiSearchURL);
+    NSLog(@"line 255:wikiSearchURL: %@",wikiSearchURL);
     
-    
+
     [NSURLConnection sendAsynchronousRequest:wikiSearchRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error){
@@ -259,30 +266,37 @@
                                NSDictionary *queryDictionary = [responseDictionary objectForKey:@"query"];
                                searchArray = [queryDictionary objectForKey:@"search"];
                                
-                               
-                               //i can't tell if this is a dictionary sorting issue - or whether it's a loading issue, as with the gallery.
-                               //sortedWikiQueryArray = [[queryDictionary allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
-                                   //return ([obj1 compare:obj2] == NSOrderedDescending);
-                               
                                for (NSDictionary *wikiSearchDictionary in searchArray) {
                                    
                                    FSVenueDetail_WikiObject *wikiObject = [[FSVenueDetail_WikiObject alloc] init];
                                    
                                    wikiObject.wikiTitle = [wikiSearchDictionary objectForKey:@"title"];
+                                   wikiObject.wikiTitle = [wikiSearchDictionary objectForKey:@"title"];
+
                                    
                                    NSString *wikiSearchByTitle = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/%@",wikiObject.wikiTitle];
                                    NSString *wikiTitleUrlString = [wikiSearchByTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                                    wikiObject.wikiMainURL = [NSURL URLWithString:wikiTitleUrlString];
 
                                    [wikiSearchResultArray addObject: wikiObject];
-                                   NSLog(@"%@", wikiSearchResultArray);
-                                                                
+                                   
                                }
                                [self.wikiCollectionView reloadData];
                                
+                           
                            }];
+
 }
 
+//Configures a cell for a given index path
+-(void)configureCell:(FSVenueDetail_WikiCell *)cell forIndexPath:(NSIndexPath *)indexPath
+{
+    FSVenueDetail_WikiObject *wikiCellObject = wikiSearchResultArray[indexPath.row];
+    NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
+
+    [cell loadWebView:wikiSelectionRequest];
+    
+}
 
 #pragma
 #pragma mark CollectionView Setup
@@ -304,37 +318,64 @@
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+     
+    FSVenueDetail_WikiCell *wikiCollCell = [self.wikiCollectionView dequeueReusableCellWithReuseIdentifier: CellIdentifier forIndexPath:indexPath];
+    [self configureCell:wikiCollCell forIndexPath:indexPath];
+    NSLog(@"Wiki Cell Dequeued?");
+   
     
-    FSVenueDetail_WikiCell *wikiCollCell = [self.wikiCollectionView dequeueReusableCellWithReuseIdentifier: @"wikiCell" forIndexPath:indexPath];
-    //the documentation says that if you dequeue, the cell will never be nil, so i removed the if cell = nil part.
-
-    FSVenueDetail_WikiObject *wikiCellObject = [wikiSearchResultArray objectAtIndex:indexPath.row];
-    //row vs. item may be the slow loading issue or not?
-    
-    NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
-    [wikiCollCell.wikiWebView loadRequest:wikiSelectionRequest];
-
-    NSString *wikiWebTitle =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('title')[0].textContent"];
-    NSLog(@"title: %@ char count: %d", wikiWebTitle, [wikiWebTitle length]);
-    if ([wikiWebTitle length] >0){
-        NSUInteger wikiBoilerIndex = [wikiWebTitle length]-35;
-        NSRange wikiBoilerRange = [wikiWebTitle rangeOfComposedCharacterSequenceAtIndex:wikiBoilerIndex];
-        self.wikiTruncatedTitle = [wikiWebTitle substringToIndex: wikiBoilerRange.location];
-
-    }
-        
-    NSString *wikiFirstPara =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].textContent"];
-    NSLog(@"%@", wikiFirstPara);
-    
-            
-    wikiCollCell.wikiLabel.text = self.wikiTruncatedTitle;
-    wikiCollCell.wikifirstParaText.text = wikiFirstPara;
-
-
     return wikiCollCell;
 
 }
 
+/*- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FSVenueDetail_WikiCell *wikiCollCell =  [collectionView dequeueReusableCellWithReuseIdentifier:@"wikiCell" forIndexPath:indexPath];
+    NSLog(@"Wiki Cell Dequeued?");
+    FSVenueDetail_WikiObject *wikiCellObject = wikiSearchResultArray[indexPath.item];
+    
+    wikiCollCell.wikiLabel.text = nil;
+    wikiCollCell.wikifirstParaText.text = nil;
+    
+    // load webViews in the background
+    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        
+        [wikiCollCell.activityIndicator startAnimating];
+        NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
+        [wikiCollCell.wikiWebView loadRequest:wikiSelectionRequest];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // then set them via the main queue if the cell is still visible.
+            if ([self.wikiCollectionView.indexPathsForVisibleItems containsObject:indexPath]) {
+                
+                    NSString *wikiWebTitle =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('title')[0].textContent"];
+                    NSLog(@"title: %@ char count: %d", wikiWebTitle, [wikiWebTitle length]);
+                    if ([wikiWebTitle length] >0){
+                        NSUInteger wikiBoilerIndex = [wikiWebTitle length]-35;
+                        NSRange wikiBoilerRange = [wikiWebTitle rangeOfComposedCharacterSequenceAtIndex:wikiBoilerIndex];
+                        self.wikiTruncatedTitle = [wikiWebTitle substringToIndex: wikiBoilerRange.location];
+                        
+                    }
+                    
+        
+                NSString *wikiFirstPara =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].textContent"];
+                NSLog(@"%@", wikiFirstPara);
+                
+                wikiCollCell.wikiLabel.text = self.wikiTruncatedTitle;
+                wikiCollCell.wikifirstParaText.text = wikiFirstPara;
+                [wikiCollCell.activityIndicator stopAnimating];
+            }
+        });
+    }];
+    [self.wikiQueue addOperation:operation];
+
+    
+
+    return wikiCollCell;
+    
+
+}*/
 
 
 @end

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FSVenueDetail_WikiCell : UICollectionViewCell
-@property (strong, nonatomic) IBOutlet UIWebView *wikiWebView;
-@property (strong, nonatomic) IBOutlet UILabel *wikiLabel;
-@property (strong, nonatomic) IBOutlet UITextView *wikifirstParaText;
 
+
+
+-(void)loadWebView:(NSURLRequest*)wikiSelectionRequest;
 
 @end

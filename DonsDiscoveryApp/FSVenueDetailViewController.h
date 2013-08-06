@@ -12,6 +12,8 @@
 #import "WikiDragUpView.h"
 #import "FSVenueDetail-WikiCell.h"
 #import "FSVenueDetail-WikiObject.h"
+#import "WikiCollectionFlowLayout.h"
+
 
 @interface FSVenueDetailViewController : UIViewController <UIGestureRecognizerDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -28,4 +30,5 @@
 @property (strong, nonatomic) IBOutlet UIView *wikiBottomBarView;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *wikiCollectionView;
+@property (strong, nonatomic) IBOutlet WikiCollectionFlowLayout *wikiLayout;
 @end

@@ -53,9 +53,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     //download the current coord.
     [self startStandardUpdates];
     [self chooseSuggestion];
-    //UIFont *znikomit = [UIFont fontWithName:@"Znikomit" size:self.suggestionViewLabel.font.pointSize];
-    //self.suggestionViewLabel.font = znikomit;
-    
+
 
 }
 
@@ -247,7 +245,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     
     FlickrByTagCell *flickrByTagCell = [self.taggedItemsCollectionView dequeueReusableCellWithReuseIdentifier:kCellID forIndexPath:indexPath];
     //the documentation says that if you dequeue, the cell will never be nil, so i removed the if cell = nil part.
-    
+    NSLog(@"flickr Cell dequeued");
     SourceURLTags *individualTag = [self.taggedImagesArray objectAtIndex:indexPath.row];
     NSString *thumbURLString =individualTag.urlStringForTag;
     NSURL *thumbURL = [NSURL URLWithString: thumbURLString];
@@ -266,7 +264,6 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
             // cache the image for use later (when scrolling up)
             thumbnail = image;}
     
-    //flickrByTagCell.tagImageView.image= thumbnail;
     flickrByTagCell.tagLabel.text = individualTag.titleForTag;
     
     // if we want to select, we can create a custom background class with an image or CGRect.
