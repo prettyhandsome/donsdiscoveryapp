@@ -8,13 +8,23 @@
 
 #import "AppDelegate.h"
 #import "StyleSheet.h"
+#import "AFNetworking.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     [StyleSheet applyStyle];
+    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
+    
+    //review NSHipster article for more detail
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
+                                                         diskCapacity:20 * 1024 * 1024
+                                                             diskPath:nil];
+    [NSURLCache setSharedURLCache:URLCache];
 
     return YES;
 }
@@ -45,5 +55,8 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+   
 
 @end

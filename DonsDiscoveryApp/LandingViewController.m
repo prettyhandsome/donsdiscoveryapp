@@ -7,12 +7,12 @@
 //
 
 #import "LandingViewController.h"
-#import "FlickrByLocViewController.h"
 #import "FlickrByTagViewController.h"
 #import "FlickrByTagCell.h"
 #import "FlickrTappedViewController.h"
 #import "BunnyTail.h"
 #import "FSVenueDetailViewController.h"
+#import <AFNetworking.h>
 
 
 @interface LandingViewController ()
@@ -31,12 +31,12 @@
 
 
 
-//NSString *kClientID = @"EBI30SCSCWA0UWVD5GRZI4HUGZNRLOTFGBVDVQB3FG2LU5O0";
-//NSString *kRedirectURI = @"http://www.mobilemakers.co";
+NSString *kClientID = @"EBI30SCSCWA0UWVD5GRZI4HUGZNRLOTFGBVDVQB3FG2LU5O0";
+NSString *kRedirectURI = @"http://bemonstrous.com/defaultsite";
 
 //Sonam foursquare info
-NSString *kClientID=@"MFDIXCKNSUTA01UKTJUUCPDLOU2QX3GA4NAFF4YFHGF1KDXH";
-NSString *kRedirectURI = @"http://www.mobilemakers.co";
+//NSString *kClientID=@"MFDIXCKNSUTA01UKTJUUCPDLOU2QX3GA4NAFF4YFHGF1KDXH";
+//NSString *kRedirectURI = @"http://www.mobilemakers.co";
 
 
 @implementation LandingViewController
@@ -70,6 +70,7 @@ NSString *kRedirectURI = @"http://www.mobilemakers.co";
     self.landingOptions = [NSArray arrayWithObjects: @"food", @"drink", @"art & architecture", @"events", @"feeling lucky", nil];
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -110,6 +111,7 @@ NSString *kRedirectURI = @"http://www.mobilemakers.co";
         
 
         [self.loginWebView removeFromSuperview];
+        [self.loginWebView stopLoading];
     }
     
 }

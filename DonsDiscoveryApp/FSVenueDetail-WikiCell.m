@@ -8,16 +8,16 @@
 
 #import "FSVenueDetail-WikiCell.h"
 #import "WikiCollectionFlowLayoutAttributes.h"
+#import "AppDelegate.h"
 
 @implementation FSVenueDetail_WikiCell
 
 {
     UIView          *maskView;
-    
-    UIWebView       *wikiWebView;
-    UILabel         *wikiLabel;
-    UITextView      *wikifirstParaText;
     NSString        *wikiTruncatedTitle;
+    UIWebView       *wikiWebView;
+    UIView          *tapView;
+    
 
     //UIActivityIndicatorView *activityIndicator;
 }
@@ -27,7 +27,8 @@
 {
     if (!(self = [super initWithFrame:frame])) return nil;
     
-    wikiWebView = [[UIWebView alloc] initWithFrame:CGRectInset(CGRectMake(0,0, CGRectGetWidth(frame), CGRectGetHeight(frame)), 20, 20)];
+    self.userInteractionEnabled = YES;
+    /*wikiWebView = [[UIWebView alloc] initWithFrame:CGRectInset(CGRectMake(0,0, CGRectGetWidth(frame), CGRectGetHeight(frame)), 20, 20)];
     wikiWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     wikiWebView.clipsToBounds = YES;
     [wikiWebView setUserInteractionEnabled:NO];
@@ -35,31 +36,39 @@
 
     [wikiWebView setAlpha:0.0];
     [self.contentView addSubview:wikiWebView];
+    */
+    self.wikiLabel = [[UILabel alloc] initWithFrame:CGRectMake(5,0, CGRectGetWidth(frame), 27)];
+    self.wikiLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.wikiLabel.clipsToBounds = YES;
+    [self.wikiLabel setUserInteractionEnabled:NO];
+    self.wikiLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:14.0f];
+    self.wikiLabel.textColor = [UIColor whiteColor];
+    self.wikiLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:self.wikiLabel];
     
-    wikiLabel = [[UILabel alloc] initWithFrame:CGRectMake(5,0, CGRectGetWidth(frame), 27)];
-    wikiLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    wikiLabel.clipsToBounds = YES;
-    [wikiLabel setUserInteractionEnabled:NO];
-    wikiLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:14.0f];
-    wikiLabel.textColor = [UIColor whiteColor];
-    wikiLabel.backgroundColor = [UIColor clearColor];
-    [self.contentView addSubview:wikiLabel];
+    self.wikifirstParaText = [[UITextView alloc] initWithFrame:CGRectMake(-2,18, CGRectGetWidth(frame)-7, 100)];
+    self.wikifirstParaText.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.wikifirstParaText.clipsToBounds = YES;
+    [self.wikifirstParaText setUserInteractionEnabled:NO];
+    self.wikifirstParaText.font = [UIFont fontWithName: @"Helvetica-light" size:11.0f];
+    self.wikifirstParaText.textColor = [UIColor whiteColor];
+    self.wikifirstParaText.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:self.wikifirstParaText];
     
-    wikifirstParaText = [[UITextView alloc] initWithFrame:CGRectMake(-2,18, CGRectGetWidth(frame)-7, 100)];
-    wikifirstParaText.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    wikifirstParaText.clipsToBounds = YES;
-    [wikifirstParaText setUserInteractionEnabled:NO];
-    wikifirstParaText.font = [UIFont fontWithName: @"Helvetica-light" size:11.0f];
-    wikifirstParaText.textColor = [UIColor whiteColor];
-    wikifirstParaText.backgroundColor = [UIColor clearColor];
-    [self.contentView addSubview:wikifirstParaText];
+    tapView = [[UIView alloc] initWithFrame:CGRectMake(-2, 18, CGRectGetWidth(frame)-7, 100)];
+    tapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    tapView.clipsToBounds = YES;
+    [tapView setUserInteractionEnabled:YES];
+    tapView.backgroundColor =[UIColor whiteColor];
+    tapView.alpha = 0.0f;
+    [self.contentView insertSubview:tapView aboveSubview:self.wikifirstParaText];
 
     
     maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))];
     maskView.backgroundColor = [UIColor blackColor];
     maskView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     maskView.alpha = 1.0f;
-    [self.contentView insertSubview:maskView aboveSubview:wikiWebView];
+    [self.contentView insertSubview:maskView aboveSubview:self.wikifirstParaText];
     
     // This will make the rest of our cell, outside the image view, appear transparent against a black background.
     //self.backgroundColor = [UIColor brownColor];
@@ -73,8 +82,8 @@
 -(void)prepareForReuse
 {
     //wikiWebView = nil;// doing this limits me to just 2 webview, dequeue one & two. the labels never load.
-    wikiLabel.text = nil;
-    wikifirstParaText.text = nil;
+    self.wikiLabel.text = nil;
+    self.wikifirstParaText.text = nil;
 }
 
 -(void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes
@@ -100,7 +109,8 @@
 
 
 
--(void)loadWebView:(NSURLRequest*)wikiSelectionRequest;
+
+/*-(void)loadWebView:(NSURLRequest*)wikiSelectionRequest;
 {
     [wikiWebView loadRequest:wikiSelectionRequest];
     
@@ -126,6 +136,7 @@
         NSRange wikiBoilerRange = [wikiWebTitle rangeOfComposedCharacterSequenceAtIndex:wikiBoilerIndex];
         wikiTruncatedTitle = [[NSString alloc] init];
         wikiTruncatedTitle = [wikiWebTitle substringToIndex: wikiBoilerRange.location];
+        
         wikiLabel.text = wikiTruncatedTitle;
         
         NSString *wikiFirstPara =[wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].textContent"];
@@ -134,6 +145,6 @@
         wikiLabel.text = wikiTruncatedTitle;
         wikifirstParaText.text = wikiFirstPara;
     }
-}
+}*/
 
 @end

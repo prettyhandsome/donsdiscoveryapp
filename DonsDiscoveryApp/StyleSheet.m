@@ -46,6 +46,6 @@ UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
                                 [UIFont fontWithName:@"AmericanTypewriter" size:14.0f],UITextAttributeFont,
                                 nil];
     [[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
-
-}
+    
+   }
 @end

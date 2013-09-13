@@ -24,6 +24,9 @@
 //collection view items:
     NSArray *photoByTagArray;
     NSString *idForTag;
+    
+    int     segueTestCount;
+    int     flickrURLrequestCount;
 }
 @property (strong, nonatomic) CLLocationManager *myLocationManager;
 
@@ -53,6 +56,8 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     //download the current coord.
     [self startStandardUpdates];
     [self chooseSuggestion];
+    
+    segueTestCount = 1;
 
 
 }
@@ -127,6 +132,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     NSLog(@"currently at lat:%f long:%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
     [self getFlickrJSONData];
+    [self.myLocationManager stopUpdatingLocation];
 
     
 }
@@ -151,11 +157,14 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     NSURLRequest *imageByTagRequest = [NSURLRequest requestWithURL: imageByTagURL];
     
     [self.activityIndicator startAnimating];
-    
+    flickrURLrequestCount++;
+    NSLog(@"urlRequestCount %d", flickrURLrequestCount);
     
     [NSURLConnection sendAsynchronousRequest:imageByTagRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error){
+
+                               
                                
                                NSDictionary *tagRequestDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                __unused NSDictionary *statOKDict = [tagRequestDictionary objectForKey:@"stat"];
@@ -286,6 +295,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
     {
+        segueTestCount++;
         
         if ([[segue identifier] isEqualToString:@"pushToDetails"]){
         
@@ -294,7 +304,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
             NSString *photoIdToPush = [photoByTagArray valueForKey:@"id"][selectedIndexPath.row];
             ((FlickrTappedViewController*)(segue.destinationViewController)).photoTappedID = photoIdToPush;
         
-    NSLog(@"photo ID to push is %@",photoIdToPush);
+    NSLog(@"photo ID to push is %@, %d time through",photoIdToPush, segueTestCount);
 
 }
     }

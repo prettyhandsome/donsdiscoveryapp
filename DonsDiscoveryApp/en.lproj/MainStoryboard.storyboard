@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="K54-lN-sRf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -103,7 +103,6 @@
                                 <connections>
                                     <outlet property="tagImageView" destination="JJZ-e2-xSW" id="SdK-tj-YWw"/>
                                     <outlet property="tagLabel" destination="U7Q-zv-isb" id="dB1-DV-Fgc"/>
-                                    <segue destination="GE4-Ee-AWe" kind="push" identifier="pushToDetails" id="j2r-v6-96f"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -118,6 +117,7 @@
                         <outlet property="suggestionView" destination="Sas-zI-rDh" id="bC9-Ac-BPe"/>
                         <outlet property="suggestionViewLabel" destination="VIK-Pq-yXr" id="nU0-I7-n7N"/>
                         <outlet property="taggedItemsCollectionView" destination="08f-4u-zRr" id="c67-oK-ilL"/>
+                        <segue destination="GE4-Ee-AWe" kind="push" identifier="pushToDetails" id="QTV-w3-Cko"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1M3-mf-PPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,7 +141,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="490" y="-520"/>
+            <point key="canvasLocation" x="502" y="-556"/>
         </scene>
         <!--Flickr Tapped View Controller-->
         <scene sceneID="IuQ-7O-7Vo">
@@ -186,7 +186,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view autoresizesSubviews="NO" contentMode="scaleAspectFit" id="PYK-1U-KZJ" customClass="WikiDragUpView">
-                                <rect key="frame" x="0.0" y="231" width="320" height="185"/>
+                                <rect key="frame" x="0.0" y="230" width="320" height="185"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="n4e-fM-xBK">
@@ -359,82 +359,6 @@
         <image name="rabbit-hole-landing.png" width="320" height="155"/>
         <image name="rabbit-hole-landingTail.png" width="320" height="155"/>
     </resources>
-    <classes>
-        <class className="BunnyTail" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BunnyTail.h"/>
-        </class>
-        <class className="FSVenueDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FSVenueDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="locationTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="phoneTextVIew" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="venueNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="venueOpenLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="venueRatingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="venueURLView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="wikiBottomBarImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="wikiBottomBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="wikiCollectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="wikiLayout" candidateClass="WikiCollectionFlowLayout"/>
-            </relationships>
-        </class>
-        <class className="FlickrByTagCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrByTagCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tagImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tagLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FlickrByTagViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrByTagViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="suggestionView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="suggestionViewLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="taggedItemsCollectionView" candidateClass="UICollectionView"/>
-            </relationships>
-        </class>
-        <class className="FlickrTappedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrTappedViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="checkInButton:"/>
-                <relationship kind="outlet" name="latTextLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="popUpLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="LandingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LandingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="bunnyTail" candidateClass="BunnyTail"/>
-                <relationship kind="outlet" name="hopLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="landingOptionsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="loginWebView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="connectToFSwithButton:"/>
-            </relationships>
-        </class>
-        <class className="WikiCollectionFlowLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WikiCollectionFlowLayout.h"/>
-        </class>
-        <class className="WikiDragUpView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WikiDragUpView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

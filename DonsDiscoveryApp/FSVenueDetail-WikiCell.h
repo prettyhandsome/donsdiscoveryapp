@@ -12,6 +12,13 @@
 
 
 
--(void)loadWebView:(NSURLRequest*)wikiSelectionRequest;
+@property (strong,nonatomic)    UILabel         *wikiLabel;
+@property (strong,nonatomic)    UITextView      *wikifirstParaText;
+@property (strong,nonatomic)    UIButton        *moreInfoButton; 
+
+
+
+
+//-(void)loadWebView:(NSURLRequest*)wikiSelectionRequest;
 
 @end

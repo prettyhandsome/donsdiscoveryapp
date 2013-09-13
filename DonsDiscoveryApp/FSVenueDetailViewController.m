@@ -7,6 +7,8 @@
 //
 
 #import "FSVenueDetailViewController.h"
+#import "WikipediaAPIClient.h"
+#import <AFNetworking.h>
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -247,54 +249,92 @@ static NSString *CellIdentifier = @"CellIdentifier";
 {
 //this is a prime candidate for stuff to put on the not main thread.
     wikiSearchResultArray = [[NSMutableArray alloc] init];
+
+    // 1 - Create API client
+    WikipediaAPIClient *client = [WikipediaAPIClient sharedClient];
     
+    // 2 - Create API query request
     NSString *wikiConcantenateString = [NSString stringWithFormat:@"http://en.wikipedia.org/w/api.php?action=query&prop=info&inprop=url&format=json&list=search&srsearch=%@ %@", self.venueCity, venueFirstCategory];
+
+    NSString *wikiPath = [wikiConcantenateString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSString *wikiURLString = [wikiConcantenateString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
+    NSURLRequest* request = [client requestWithMethod:@"GET" path:wikiPath parameters:nil];
 
-    NSURL *wikiSearchURL = [NSURL URLWithString:wikiURLString];
-    NSURLRequest *wikiSearchRequest = [NSURLRequest requestWithURL:wikiSearchURL];
-    NSLog(@"line 255:wikiSearchURL: %@",wikiSearchURL);
-    
+    // 3 - Create JSON request operation
+    AFJSONRequestOperation* operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+       
+        // 3a - Request succeeded block
 
-    [NSURLConnection sendAsynchronousRequest:wikiSearchRequest
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *urlResponse, NSData *data, NSError *error){
-                               
-                               NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                               NSDictionary *queryDictionary = [responseDictionary objectForKey:@"query"];
-                               searchArray = [queryDictionary objectForKey:@"search"];
-                               
-                               for (NSDictionary *wikiSearchDictionary in searchArray) {
-                                   
-                                   FSVenueDetail_WikiObject *wikiObject = [[FSVenueDetail_WikiObject alloc] init];
-                                   
-                                   wikiObject.wikiTitle = [wikiSearchDictionary objectForKey:@"title"];
-                                   wikiObject.wikiTitle = [wikiSearchDictionary objectForKey:@"title"];
+        NSDictionary *responseDictionary = JSON;
+        NSDictionary *queryDictionary = [responseDictionary objectForKey:@"query"];
+        searchArray = [queryDictionary objectForKey:@"search"];
+        
+        for (NSDictionary *wikiSearchDictionary in searchArray) {
+            
+            FSVenueDetail_WikiObject *wikiObject = [[FSVenueDetail_WikiObject alloc] init];
+            
+            wikiObject.wikiTitle = [wikiSearchDictionary objectForKey:@"title"];
+           NSString *snippetString =[wikiSearchDictionary objectForKey:@"snippet"];
+                        
+            NSString *wikiSearchByTitle = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/%@",wikiObject.wikiTitle];
+            NSString *wikiTitleUrlString = [wikiSearchByTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            wikiObject.wikiMainURL = [NSURL URLWithString:wikiTitleUrlString];
+            
+            wikiObject.wikiSnippetString = [self removeCommonTagsfor:snippetString];
+//            -12char to get to beginning of ...more...
 
-                                   
-                                   NSString *wikiSearchByTitle = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/%@",wikiObject.wikiTitle];
-                                   NSString *wikiTitleUrlString = [wikiSearchByTitle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                                   wikiObject.wikiMainURL = [NSURL URLWithString:wikiTitleUrlString];
+            NSLog(@"unadulterated snippet: %@", snippetString);
+            NSLog(@"%@: %@", wikiObject.wikiTitle, wikiObject.wikiSnippetString);
+            
+        [wikiSearchResultArray addObject: wikiObject];
+            
+        }
+        [self.wikiCollectionView reloadData];
 
-                                   [wikiSearchResultArray addObject: wikiObject];
-                                   
-                               }
-                               [self.wikiCollectionView reloadData];
-                               
-                           
-                           }];
 
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // 3b - Request failed block
+        NSLog(@"received a %d", response.statusCode);
+        NSLog(@"the error was %@", error);
+    }];
+    // 4 - Start request
+    [operation start];
 }
 
-//Configures a cell for a given index path
+-(NSMutableAttributedString*)removeCommonTagsfor: (NSString*) string
+{
+    NSString *boldBeginsString = [NSString stringWithFormat:@"<b>"];
+    NSString *boldEndsString = [NSString stringWithFormat:@"</b>"];
+    NSString *cleanString =[string stringByReplacingOccurrencesOfString:boldBeginsString withString:@""];
+    cleanString =[cleanString stringByReplacingOccurrencesOfString:boldEndsString withString:@""];
+
+    
+    NSString *searchClassBegin = [NSString stringWithFormat:@"<span class='searchmatch'>"];
+    NSString *searchClassEnds = [NSString stringWithFormat:@"</span>"];
+    cleanString =[cleanString stringByReplacingOccurrencesOfString:searchClassBegin withString:@""];
+    cleanString =[cleanString
+                  stringByReplacingOccurrencesOfString:searchClassEnds withString:@""];
+
+    NSMutableString *moreString = [NSString stringWithFormat:@"%@ tap for more...", cleanString];
+    
+    NSMutableAttributedString *newWikiSnippet = [[NSMutableAttributedString alloc] initWithString:moreString];
+    UIFont *helvLtItal = [UIFont fontWithName: @"Helvetica-LightOblique" size:12.0f];
+    [newWikiSnippet addAttribute:NSFontAttributeName value:helvLtItal range:NSMakeRange(newWikiSnippet.length-20, 20)];
+    
+    return newWikiSnippet;
+}
+
+    
+    //Configures a cell for a given index path
 -(void)configureCell:(FSVenueDetail_WikiCell *)cell forIndexPath:(NSIndexPath *)indexPath
 {
     FSVenueDetail_WikiObject *wikiCellObject = wikiSearchResultArray[indexPath.row];
-    NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
+    cell.wikifirstParaText.attributedText =  wikiCellObject.wikiSnippetString;
+    cell.wikiLabel.text = wikiCellObject.wikiTitle;
+        
+    //NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
 
-    [cell loadWebView:wikiSelectionRequest];
+    //[cell loadWebView:wikiSelectionRequest];
     
 }
 
@@ -320,6 +360,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
      
     FSVenueDetail_WikiCell *wikiCollCell = [self.wikiCollectionView dequeueReusableCellWithReuseIdentifier: CellIdentifier forIndexPath:indexPath];
+
     [self configureCell:wikiCollCell forIndexPath:indexPath];
     NSLog(@"Wiki Cell Dequeued?");
    
@@ -328,54 +369,13 @@ static NSString *CellIdentifier = @"CellIdentifier";
 
 }
 
-/*- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    FSVenueDetail_WikiCell *wikiCollCell =  [collectionView dequeueReusableCellWithReuseIdentifier:@"wikiCell" forIndexPath:indexPath];
-    NSLog(@"Wiki Cell Dequeued?");
-    FSVenueDetail_WikiObject *wikiCellObject = wikiSearchResultArray[indexPath.item];
-    
-    wikiCollCell.wikiLabel.text = nil;
-    wikiCollCell.wikifirstParaText.text = nil;
-    
-    // load webViews in the background
-    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        
-        [wikiCollCell.activityIndicator startAnimating];
-        NSURLRequest *wikiSelectionRequest = [NSURLRequest requestWithURL:wikiCellObject.wikiMainURL];
-        [wikiCollCell.wikiWebView loadRequest:wikiSelectionRequest];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            // then set them via the main queue if the cell is still visible.
-            if ([self.wikiCollectionView.indexPathsForVisibleItems containsObject:indexPath]) {
-                
-                    NSString *wikiWebTitle =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('title')[0].textContent"];
-                    NSLog(@"title: %@ char count: %d", wikiWebTitle, [wikiWebTitle length]);
-                    if ([wikiWebTitle length] >0){
-                        NSUInteger wikiBoilerIndex = [wikiWebTitle length]-35;
-                        NSRange wikiBoilerRange = [wikiWebTitle rangeOfComposedCharacterSequenceAtIndex:wikiBoilerIndex];
-                        self.wikiTruncatedTitle = [wikiWebTitle substringToIndex: wikiBoilerRange.location];
-                        
-                    }
-                    
-        
-                NSString *wikiFirstPara =[wikiCollCell.wikiWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].textContent"];
-                NSLog(@"%@", wikiFirstPara);
-                
-                wikiCollCell.wikiLabel.text = self.wikiTruncatedTitle;
-                wikiCollCell.wikifirstParaText.text = wikiFirstPara;
-                [wikiCollCell.activityIndicator stopAnimating];
-            }
-        });
-    }];
-    [self.wikiQueue addOperation:operation];
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-
-    return wikiCollCell;
+    FSVenueDetail_WikiObject *tappedWikiArticle = [wikiSearchResultArray objectAtIndex:indexPath.item];
+    [[UIApplication sharedApplication] openURL:tappedWikiArticle.wikiMainURL];
+    NSLog(@"tappedArticle : %@", tappedWikiArticle.wikiTitle);
     
-
-}*/
-
+}
 
 @end

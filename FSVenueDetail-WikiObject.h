@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString * wikiTitle;
 @property (strong, nonatomic) NSURL *wikiMainURL;
+@property (strong, nonatomic) NSMutableAttributedString *wikiSnippetString;
 
 @end
