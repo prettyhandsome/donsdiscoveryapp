@@ -27,6 +27,7 @@
 {
     if (!(self = [super initWithFrame:frame])) return nil;
     
+    
     self.userInteractionEnabled = YES;
     /*wikiWebView = [[UIWebView alloc] initWithFrame:CGRectInset(CGRectMake(0,0, CGRectGetWidth(frame), CGRectGetHeight(frame)), 20, 20)];
     wikiWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -37,12 +38,13 @@
     [wikiWebView setAlpha:0.0];
     [self.contentView addSubview:wikiWebView];
     */
+    
     self.wikiLabel = [[UILabel alloc] initWithFrame:CGRectMake(5,0, CGRectGetWidth(frame), 27)];
     self.wikiLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.wikiLabel.clipsToBounds = YES;
     [self.wikiLabel setUserInteractionEnabled:NO];
     self.wikiLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:14.0f];
-    self.wikiLabel.textColor = [UIColor whiteColor];
+    self.wikiLabel.textColor = [UIColor greenColor];
     self.wikiLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.wikiLabel];
     
@@ -50,8 +52,8 @@
     self.wikifirstParaText.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.wikifirstParaText.clipsToBounds = YES;
     [self.wikifirstParaText setUserInteractionEnabled:NO];
-    self.wikifirstParaText.font = [UIFont fontWithName: @"Helvetica-light" size:11.0f];
-    self.wikifirstParaText.textColor = [UIColor whiteColor];
+    [self.wikifirstParaText setFont:[UIFont fontWithName: @"Helvetica-Light" size:11.0f]];
+    [self.wikifirstParaText setTextColor:[UIColor whiteColor]];
     self.wikifirstParaText.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.wikifirstParaText];
     

@@ -132,7 +132,6 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
     NSLog(@"currently at lat:%f long:%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
     [self getFlickrJSONData];
-    [self.myLocationManager stopUpdatingLocation];
 
     
 }
@@ -194,7 +193,7 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                    sourceURLTag.urlStringForTag =urlForTaggedPic;
                                    sourceURLTag.titleForTag = titleForTag;
                         
-                                   NSLog(@"%@", sourceURLTag.urlStringForTag);
+                                   NSLog(@"image url %@", sourceURLTag.urlStringForTag);
                                    
                                    
                                    [self.taggedImagesArray addObject:sourceURLTag];
@@ -211,6 +210,8 @@ NSString *kApiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
 
                            }];
       [self.activityIndicator stopAnimating];
+    [self.myLocationManager stopUpdatingLocation];
+
 }
 
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock

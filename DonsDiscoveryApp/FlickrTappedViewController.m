@@ -282,7 +282,7 @@ NSString *apiKeyAgain =@"83992732ed047326809fb0a1cb368e8b";
                                        venueName = [[dictionary objectForKey:@"venue"] objectForKey:@"name"];
                                        venueID = [[dictionary objectForKey:@"venue"] objectForKey:@"id"];
                                    // could the venueID be added to the class? NSLog(@"venue ID %@", venueID);
-                                       NSArray *tipArray = [dictionary objectForKey:@"text"];
+                                      // NSArray *tipArray = [dictionary objectForKey:@"text"];
                             
                                    
                             [self setUpVenueMapAnnotationData];

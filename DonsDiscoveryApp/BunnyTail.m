@@ -33,7 +33,7 @@
 -(void)rabbitTailBounce{
     
     float xCenter = (self.superview.frame.size.width/2);
-    float yCenter = ((self.superview.frame.size.height/2)+30);
+    float yCenter = ((self.superview.frame.size.height/2)+48);
 
     CGPoint centerPos = CGPointMake(xCenter, yCenter);
     self.center = centerPos;

@@ -14,12 +14,14 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>app-icon@retina</string>
+				<string>app-icon@2px</string>
 				<string>app-icon.png</string>
 			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>Example.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

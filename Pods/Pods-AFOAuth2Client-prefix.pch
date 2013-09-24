@@ -5,5 +5,7 @@
 #import "Pods-environment.h"
 #ifdef __OBJC__
   #import <Security/Security.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #endif /* __OBJC__*/
 

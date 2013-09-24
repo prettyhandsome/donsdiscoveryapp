@@ -315,7 +315,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     cleanString =[cleanString
                   stringByReplacingOccurrencesOfString:searchClassEnds withString:@""];
 
-    NSMutableString *moreString = [NSString stringWithFormat:@"%@ tap for more...", cleanString];
+    NSString *moreString = [NSString stringWithFormat:@"%@ tap for more...", cleanString];
     
     NSMutableAttributedString *newWikiSnippet = [[NSMutableAttributedString alloc] initWithString:moreString];
     UIFont *helvLtItal = [UIFont fontWithName: @"Helvetica-LightOblique" size:12.0f];
