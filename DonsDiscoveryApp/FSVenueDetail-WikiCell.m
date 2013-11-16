@@ -44,7 +44,7 @@
     self.wikiLabel.clipsToBounds = YES;
     [self.wikiLabel setUserInteractionEnabled:NO];
     self.wikiLabel.font = [UIFont fontWithName:@"AmericanTypewriter" size:14.0f];
-    self.wikiLabel.textColor = [UIColor greenColor];
+    self.wikiLabel.textColor = [UIColor whiteColor];
     self.wikiLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.wikiLabel];
     
